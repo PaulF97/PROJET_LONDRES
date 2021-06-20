@@ -9,13 +9,13 @@ package Model;
  *
  * @author fishe
  */
-public class Projet_java {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-
+public class Member_Customer extends Customer {
+    
+    public Member_Customer(String firstName, String lastName, double idNumber, String type) {
+        super(firstName, lastName, idNumber, type);
     }
     
+    public void login(){
+        
+    }
 }
