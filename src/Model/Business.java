@@ -9,7 +9,7 @@ package Model;
  *
  * @author fishe
  */
-public class Business extends Member_Customer{
+public class Business extends MemberCustomer{
     
     public Business(String firstName, String lastName, double idNumber, String type) {
         super(firstName, lastName, idNumber, type);

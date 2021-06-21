@@ -9,9 +9,9 @@ package Model;
  *
  * @author fishe
  */
-public class New_Customer extends Customer{
+public class NewCustomer extends Customer{
     
-    public New_Customer(String firstName, String lastName, double idNumber, String type) {
+    public NewCustomer(String firstName, String lastName, double idNumber, String type) {
         super(firstName, lastName, idNumber, type);
     }
     

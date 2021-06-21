@@ -6,9 +6,10 @@
 package Vue;
 
 /**
- *
- * @author fishe
+ * Maneges the popups and GUI interfaces
+ * @author Paul and Savinien
  */
 public class Graphique {
     
 }
+   
