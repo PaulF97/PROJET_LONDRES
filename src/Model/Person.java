@@ -24,5 +24,5 @@ public abstract class Person {
         this.type = type;
     }
     
-    public abstract void browse_car();
+    public abstract void browseCar();
 }

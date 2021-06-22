@@ -15,7 +15,7 @@ public class Individual extends MemberCustomer{
         super(firstName, lastName, idNumber, type);
     }
     
-    public double individual_Discount(){
+    public double individualDiscount(){
         return 0;
     }
 }

@@ -16,7 +16,7 @@ public class Employee extends Person {
     }
 
     @Override
-    public void browse_car() {
+    public void browseCar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-}
+} 

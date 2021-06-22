@@ -15,7 +15,7 @@ public class Business extends MemberCustomer{
         super(firstName, lastName, idNumber, type);
     }
     
-    public double Business_Discount(){
+    public double BusinessDiscount(){
         
         return 0;
     }
