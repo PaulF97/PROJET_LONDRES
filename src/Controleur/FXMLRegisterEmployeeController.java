@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 public class FXMLRegisterEmployeeController {
 
@@ -42,7 +43,8 @@ public class FXMLRegisterEmployeeController {
             window.setScene(tableViewScene);
             window.centerOnScreen();
             window.show();
-        } else if(event.getSource() == m_closeAdmin){ 
+        } else if(event.getSource() == m_closeAdmin){
+            JOptionPane.showMessageDialog(null, "The application is about to close","information", JOptionPane.INFORMATION_MESSAGE);
             exit();
         }
             

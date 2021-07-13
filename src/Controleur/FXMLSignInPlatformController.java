@@ -78,6 +78,7 @@ public class FXMLSignInPlatformController {
             window.centerOnScreen();
             window.show();
         } else if(event.getSource() == m_closeSignUp){
+            JOptionPane.showMessageDialog(null, "The application is about to close","information", JOptionPane.INFORMATION_MESSAGE);
             exit();
         }
         

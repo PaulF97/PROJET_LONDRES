@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -51,6 +52,7 @@ public class FXMLRegisterCustomerController {
             window.centerOnScreen();
             window.show();
         } else if(event.getSource() == m_closeCustomerLogin){
+            JOptionPane.showMessageDialog(null, "The application is about to close","information", JOptionPane.INFORMATION_MESSAGE);
             exit();
         }
  

@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -43,6 +44,7 @@ public class FXMLSelectionPersonTypeController {
             window.centerOnScreen();
             window.show();
         } else if(event.getSource() == m_closeType){
+            JOptionPane.showMessageDialog(null, "The application is about to close","information", JOptionPane.INFORMATION_MESSAGE);
             exit();
         }
     }

@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 public class FXMLPurposeController {
 
@@ -32,6 +33,7 @@ public class FXMLPurposeController {
             window.centerOnScreen();
             window.show();
         } else if(event.getSource() == m_closePurpose){ // if the customer want's to interupt the processt
+            JOptionPane.showMessageDialog(null, "The application is about to close","information", JOptionPane.INFORMATION_MESSAGE);
             exit();
         }
     }
