@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controleur.FXMLRegisterEmployeeController">
+   <children>
+      <SplitPane dividerPositions="0.2839506172839506" orientation="VERTICAL" prefHeight="407.0" prefWidth="600.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <Label layoutX="108.0" layoutY="42.0" text="Please enter your administrator information">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <PasswordField fx:id="m_passwordAdmin" layoutX="241.0" layoutY="119.0" />
+                  <TextField fx:id="m_userAdmin" layoutX="241.0" layoutY="53.0" />
+                  <Label layoutX="94.0" layoutY="123.0" prefHeight="17.0" prefWidth="73.0" text="Password" />
+                  <Label layoutX="94.0" layoutY="57.0" prefHeight="17.0" prefWidth="73.0" text="UserName" />
+                  <Button fx:id="m_buttonAdmin" layoutX="279.0" layoutY="187.0" mnemonicParsing="false" onAction="#onClickedAdmin" prefHeight="59.0" prefWidth="111.0" text="Validate" />
+                  <Button fx:id="m_backAdmin" layoutY="246.0" mnemonicParsing="false" onAction="#onClickedAdmin" prefHeight="45.0" prefWidth="81.0" text="Back" />
+                  <Button fx:id="m_closeAdmin" layoutX="517.0" layoutY="241.0" mnemonicParsing="false" onAction="#onClickedAdmin" prefHeight="45.0" prefWidth="81.0" text="Close" />
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="295.0" prefWidth="481.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controleur.FXMLSelectionPersonTypeController">
+   <children>
+      <Button fx:id="m_buttonCustomer" layoutX="65.0" layoutY="186.0" mnemonicParsing="false" onAction="#onClickedChoice" prefHeight="44.0" prefWidth="115.0" text="A customer" />
+      <Button fx:id="m_buttonEmployee" layoutX="308.0" layoutY="186.0" mnemonicParsing="false" onAction="#onClickedChoice" prefHeight="44.0" prefWidth="115.0" text="A Employee" />
+      <Label layoutX="62.0" layoutY="113.0" prefHeight="35.0" prefWidth="365.0" text="What type of person are you ?">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="78.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@client.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="78.0" fitWidth="150.0" layoutX="371.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@customer.jpg" />
+         </image>
+      </ImageView>
+      <Button fx:id="m_closeType" layoutX="398.0" layoutY="264.0" mnemonicParsing="false" onAction="#onClickedChoice" prefHeight="35.0" prefWidth="91.0" text="close" />
+   </children>
+</AnchorPane>

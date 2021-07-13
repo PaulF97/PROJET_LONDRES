@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="806.0" prefWidth="995.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controleur.FXMLSignInPlatformController">
+   <children>
+      <ImageView fitHeight="108.0" fitWidth="98.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@register.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="108.0" fitWidth="98.0" layoutX="905.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@register.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="351.0" layoutY="24.0" prefHeight="67.0" prefWidth="360.0" text="WELCOME TO THE SIGN UP PAGE. ">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="m_firstName" layoutX="469.0" layoutY="139.0" prefHeight="48.0" prefWidth="153.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="m_lastName" layoutX="469.0" layoutY="201.0" prefHeight="48.0" prefWidth="153.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="m_username" layoutX="469.0" layoutY="257.0" prefHeight="48.0" prefWidth="153.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <Label layoutX="212.0" layoutY="144.0" prefHeight="34.0" prefWidth="153.0" text="First Name">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="212.0" layoutY="206.0" prefHeight="34.0" prefWidth="143.0" text="Last Name">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="212.0" layoutY="262.0" prefHeight="34.0" prefWidth="98.0" text="Username">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="212.0" layoutY="320.0" prefHeight="34.0" prefWidth="98.0" text="Password">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="212.0" layoutY="384.0" prefHeight="34.0" prefWidth="198.0" text="Confirm password">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="m_password" layoutX="470.0" layoutY="315.0" prefHeight="48.0" prefWidth="153.0" />
+      <PasswordField fx:id="m_passwordConfirm" layoutX="469.0" layoutY="379.0" prefHeight="48.0" prefWidth="153.0" />
+      <Button fx:id="m_buttonSign" layoutX="419.0" layoutY="698.0" mnemonicParsing="false" onAction="#onClickedSign" prefHeight="67.0" prefWidth="153.0" text="Sign in">
+         <font>
+            <Font name="System Bold" size="29.0" />
+         </font>
+      </Button>
+      <Label layoutX="119.0" layoutY="618.0" prefHeight="48.0" prefWidth="310.0" text="Do you accept the term and conditions ? ">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="m_accept" layoutX="463.0" layoutY="634.0" mnemonicParsing="false" onAction="#onClickedSign" text="YES">
+         <toggleGroup>
+            <ToggleGroup fx:id="m_choice" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="m_notAccept" layoutX="530.0" layoutY="634.0" mnemonicParsing="false" onAction="#onClickedSign" prefHeight="17.0" prefWidth="53.0" text="NO" toggleGroup="$m_choice" />
+      <Button fx:id="m_backSignUp" layoutY="778.0" mnemonicParsing="false" onAction="#onClickedSign" prefHeight="32.0" prefWidth="87.0" text="Back" />
+      <Button fx:id="m_closeSignUp" layoutX="916.0" layoutY="780.0" mnemonicParsing="false" onAction="#onClickedSign" prefHeight="32.0" prefWidth="87.0" text="Close" />
+      <Label layoutX="212.0" layoutY="453.0" prefHeight="34.0" prefWidth="207.0" text="What is the purpose">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <RadioButton fx:id="m_business" layoutX="483.0" layoutY="459.0" mnemonicParsing="false" onAction="#onClickedSign" text="Business">
+         <toggleGroup>
+            <ToggleGroup fx:id="m_purpose" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="m_individual" layoutX="604.0" layoutY="459.0" mnemonicParsing="false" onAction="#onClickedSign" text="Individual" toggleGroup="$m_purpose" />
+      <Label layoutX="35.0" layoutY="540.0" prefHeight="48.0" prefWidth="933.0" text="IMPORTANTE : If you are a business, our company reserves the right to verify your information when you pick up your car.">
+         <font>
+            <Font name="System Bold Italic" size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

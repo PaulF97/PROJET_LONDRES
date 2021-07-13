@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controleur.FXML_ListOfCarsController">
+   <children>
+      <SplitPane dividerPositions="0.2034313725490196" orientation="VERTICAL" prefHeight="410.0" prefWidth="600.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <Label layoutX="254.0" layoutY="20.0" prefHeight="40.0" prefWidth="112.0" text="Car list">
+                     <font>
+                        <Font name="System Bold" size="28.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+               <children>
+                  <TableView layoutX="-2.0" prefHeight="322.0" prefWidth="600.0">
+                    <columns>
+                      <TableColumn text="Vehicule_ID" />
+                      <TableColumn prefWidth="96.0" text="Vehicule_Name" />
+                        <TableColumn prefWidth="94.0" text="first_date" />
+                        <TableColumn prefWidth="59.0" text="last_date" />
+                        <TableColumn prefWidth="76.0" text="discount" />
+                        <TableColumn prefWidth="185.0" text="rental_price" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
