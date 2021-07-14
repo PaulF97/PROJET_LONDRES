@@ -94,7 +94,7 @@ public class FXMLSignInPlatformController {
                     throw new ExceptionPasswordMistake();
                 } else if(m_passwordConfirm.getText().isEmpty()){ // if the password has not been confirmed
                     throw new ExceptionPasswordConfirm();
-                } else if(m_choice.getSelectedToggle() == m_notAccept){ // if the GNU has not been accepted
+                } else if(m_choice.getSelectedToggle() == m_notAccept || m_choice.getSelectedToggle() != m_accept){ // if the GNU has not been accepted
                     throw new ExceptionAcceptConditions();
                 } else if(m_firstName.getText().isEmpty()){ // if the first name has not been entered
                     throw new ExceptionFirstNameEmpty();
