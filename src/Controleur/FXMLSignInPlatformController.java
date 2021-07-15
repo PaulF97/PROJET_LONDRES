@@ -88,7 +88,7 @@ public class FXMLSignInPlatformController {
             try{
                 if(m_password.getText().isEmpty() && !m_password.getText().equals(m_passwordConfirm.getText()) && m_passwordConfirm.getText().isEmpty() && m_choice.getSelectedToggle() == m_notAccept && m_firstName.getText().isEmpty() && m_username.getText().isEmpty() && m_lastName.getText().isEmpty()){
                     throw new ExceptionFormEmpty();
-                }else if(m_password.getText().isEmpty()){ // if the password has not been entered
+                } else if(m_password.getText().isEmpty()){ // if the password has not been entered
                     throw new ExceptionPasswordEmpty();
                 } else if(!m_password.getText().equals(m_passwordConfirm.getText())){ // if the password has not been confirmed correctly
                     throw new ExceptionPasswordMistake();
@@ -121,7 +121,7 @@ public class FXMLSignInPlatformController {
                     user = information.getUsername();
                     type = information.getType();    
                 }
-             // exception has been catches
+             // exception processing   
             } catch(ExceptionPasswordMistake e){
                 e.getMessage();
             } catch(ExceptionAcceptConditions e){
