@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -9,31 +10,23 @@
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controleur.FXML_ListOfCarsController">
    <children>
-      <SplitPane dividerPositions="0.2034313725490196" orientation="VERTICAL" prefHeight="410.0" prefWidth="600.0">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-               <children>
-                  <Label layoutX="254.0" layoutY="20.0" prefHeight="40.0" prefWidth="112.0" text="Car list">
-                     <font>
-                        <Font name="System Bold" size="28.0" />
-                     </font>
-                  </Label>
-               </children></AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-               <children>
-                  <TableView layoutX="-2.0" prefHeight="322.0" prefWidth="600.0">
-                    <columns>
-                      <TableColumn text="Vehicule_ID" />
-                      <TableColumn prefWidth="96.0" text="Vehicule_Name" />
-                        <TableColumn prefWidth="94.0" text="first_date" />
-                        <TableColumn prefWidth="59.0" text="last_date" />
-                        <TableColumn prefWidth="76.0" text="discount" />
-                        <TableColumn prefWidth="185.0" text="rental_price" />
-                    </columns>
-                  </TableView>
-               </children>
-            </AnchorPane>
-        </items>
-      </SplitPane>
+      <TableView fx:id="tableCar" layoutY="80.0" prefHeight="329.0" prefWidth="618.0">
+        <columns>
+          <TableColumn fx:id="vehicule_id" prefWidth="90.0" text="Vehicule_id" />
+          <TableColumn fx:id="vehicule_type" prefWidth="103.0" text="vehicule_name" />
+            <TableColumn fx:id="availableFirst" prefWidth="81.0" text="first_date" />
+            <TableColumn fx:id="availableLast" prefWidth="128.0" text="last_date" />
+            <TableColumn fx:id="discount" minWidth="0.0" prefWidth="78.0" text="discount" />
+            <TableColumn fx:id="price" prefWidth="137.0" text="rental_Price" />
+        </columns>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </TableView>
+      <Label layoutX="205.0" layoutY="23.0" prefHeight="50.0" prefWidth="227.0" text="List of cars">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

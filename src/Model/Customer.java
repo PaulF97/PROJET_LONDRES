@@ -12,10 +12,13 @@ package Model;
 public class Customer extends Person {
     
     protected boolean typePerson;
+    protected String startingDate;
+    protected String endingDate;
     
     public Customer(String firstName, String lastName, String username, String password, boolean typePerson) {
         super(firstName, lastName, username, password);
         this.typePerson = typePerson;
+        
     }
 
     @Override

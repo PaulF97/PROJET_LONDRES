@@ -43,7 +43,7 @@ public class FXMLRegisterCustomerController {
     @FXML
     void onClickedRegister(ActionEvent event) throws IOException {
 
-       
+        
         if(event.getSource() == m_backCustomerLogin){
             Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXMLAccountCheckCustomer.fxml"));
             Scene tableViewScene = new Scene(tableViewParent);
@@ -77,12 +77,12 @@ public class FXMLRegisterCustomerController {
                     window.show(); 
                 }
             }
-            }catch(ExceptionPasswordEmpty e){ // password empty
-                e.getMessage();
-            } catch (ExceptionUsernameEmpty e){ // username empty
-                e.getMessage();
-            }catch(ExceptionPasswordANDusernameEmpty e){
-                e.getMessage();
-            }
+        }catch(ExceptionPasswordEmpty e){ // password empty
+            e.getMessage();
+        } catch (ExceptionUsernameEmpty e){ // username empty
+            e.getMessage();
+        }catch(ExceptionPasswordANDusernameEmpty e){
+            e.getMessage();
+        }
     }
 }
