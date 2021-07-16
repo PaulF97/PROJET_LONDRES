@@ -8,9 +8,10 @@ package Controleur;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author fishe
- */
+* This personalized exception will be excecuted if 
+* the last rental date has not been entered
+* author Paul Fisher
+*/
 public class ExceptionDateEndEmpty extends Exception {
 
     public ExceptionDateEndEmpty(){
