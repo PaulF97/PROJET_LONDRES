@@ -8,9 +8,10 @@ package Controleur;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author fishe
- */
+* This personalized exception will be excecuted if 
+* the last rental date is before the first rental date
+* author Paul Fisher
+*/
 public class ExceptionDateLastBeforeFirst extends Exception {
             
     public ExceptionDateLastBeforeFirst(){

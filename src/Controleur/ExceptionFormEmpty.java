@@ -8,9 +8,10 @@ package Controleur;
 import javax.swing.JOptionPane;
 
 /**
- *
- * author Paul Fisher
- */
+* This personalized exception will be excecuted if 
+* the new customer has not signed up
+* author Paul Fisher
+*/
 public class ExceptionFormEmpty extends Exception {
     
     public ExceptionFormEmpty(){

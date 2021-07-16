@@ -77,6 +77,7 @@ public class FXMLRegisterCustomerController {
                     window.show(); 
                 }
             }
+        // exception processing   
         }catch(ExceptionPasswordEmpty e){ // password empty
             e.getMessage();
         } catch (ExceptionUsernameEmpty e){ // username empty
