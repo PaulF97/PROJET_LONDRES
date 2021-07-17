@@ -43,7 +43,12 @@ public class FXMLChoiceActionEmployeeController {
             window.centerOnScreen();
             window.show();
         } else if(event.getSource() == m_deleteEmployee){
-            
+            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXMLDeleteCarOfList.fxml"));
+            Scene tableViewScene = new Scene(tableViewParent);
+            Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            window.setScene(tableViewScene);
+            window.centerOnScreen();
+            window.show();
         } else if(event.getSource() == m_exitEmployee){
             exit();
         }

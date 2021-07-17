@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controleur.FXMLDeleteCarOfListController">
+   <children>
+      <Label layoutX="181.0" layoutY="37.0" text="Menu to delete a rental car">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="65.0" layoutY="125.0" text="Enter the identification number">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="m_IdDelete" layoutX="341.0" layoutY="125.0" onAction="#onActionDeleteEmployee" />
+      <Button fx:id="m_validateDelete" layoutX="259.0" layoutY="214.0" mnemonicParsing="false" onAction="#onActionDeleteEmployee" text="Validate" />
+      <Button fx:id="m_back" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#onActionDeleteEmployee" text="Back" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
+      <Button fx:id="m_exit" layoutX="24.0" layoutY="371.0" mnemonicParsing="false" onAction="#onActionDeleteEmployee" text="Exit" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+   </children>
+</AnchorPane>

@@ -5,6 +5,8 @@
  */
 package Controleur;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author fishe
@@ -12,8 +14,7 @@ package Controleur;
 public class ExceptionVehiculePriceEmpty extends Exception {
 
     public ExceptionVehiculePriceEmpty() {
-                System.err.println("err");
-
+        JOptionPane.showMessageDialog(null, "you need to enter the vehicule price","error", JOptionPane.ERROR_MESSAGE);
     }
     
 }

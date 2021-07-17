@@ -5,6 +5,8 @@
  */
 package Controleur;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author fishe
@@ -12,7 +14,7 @@ package Controleur;
 public class ExceptionVehiculeIDEmpty extends Exception {
 
     public ExceptionVehiculeIDEmpty() {
-                System.err.println("err");
+        JOptionPane.showMessageDialog(null, "you need to enter the car number identification","error", JOptionPane.ERROR_MESSAGE);
 
     }
     
