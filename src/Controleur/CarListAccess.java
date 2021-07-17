@@ -12,21 +12,24 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author fishe
+ * database connection
+ * author fishe
  */
 public class CarListAccess {
     
     public static Connection getConnection(){
         Connection conn;
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/?user=root&password=");
+            
+            String url       = "jdbc:mysql://localhost:3306/project";
+            String user      = "root";
+            String password  = "";
+            conn = DriverManager.getConnection(url, user, password); // BDD connection
             return conn;
 
         } catch (SQLException ex) {
             Logger.getLogger(CarListAccess.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
-        
     }
 }

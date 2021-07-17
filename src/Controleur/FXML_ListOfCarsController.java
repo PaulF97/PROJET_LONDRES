@@ -22,15 +22,12 @@ public class FXML_ListOfCarsController implements Initializable{
 
     @FXML
     private TableView<TableCar> tableCar;
-        
-
-
+      
     @FXML
     private TableColumn<TableCar, Double> vehicule_id;
     
     @FXML
     private TableColumn<TableCar, String> vehicule_type;
-
 
     @FXML
     private TableColumn<TableCar, String> availableFirst;
@@ -69,9 +66,9 @@ public class FXML_ListOfCarsController implements Initializable{
         availableLast.setCellValueFactory(new PropertyValueFactory<>("lastDate"));
         discount.setCellValueFactory(new PropertyValueFactory<>("discount"));
         price.setCellValueFactory(new PropertyValueFactory<>("rentalPrice"));
-        
+       
         tableCar.setItems(listOfCar);
-
+        
     }
-
+    
 }
