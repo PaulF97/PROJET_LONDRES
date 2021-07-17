@@ -7,6 +7,8 @@ package Controleur;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -44,28 +46,30 @@ public class FXMLAddCarToListController {
 
     @FXML
     void ActionAddCar(ActionEvent event) throws IOException {
-        if(event.getSource() == m_addCar){
+        
+        try{
+            if(event.getSource() == m_addCar){
             
             LocalDate first = m_firstDate.getValue(); // gets the first date
             LocalDate last = m_lastDate.getValue(); // gets the last day
-            
+   
             // exception handling
             if(m_vehiculeID.getText().isEmpty()){
-                
+                throw new ExceptionVehiculeIDEmpty();
             } else if(m_vehiculeName.getText().isEmpty()){
-                
+                throw new ExceptionVehiculeNameEmpty();
             } else if(m_discount.getText().isEmpty()){
-                
+                throw new ExceptionVehiculeDiscountEmpty();
             } else if(m_rentalPrice.getText().isEmpty()){
-                
+                throw new ExceptionVehiculePriceEmpty();
             } else if(first == null && last == null){
-                System.err.println("2 dates not entered");
+                throw new ExceptionDatesEmpty();
             } else if(first == null){
-                System.err.println("first date not entered");
+                throw new ExceptionDateStartEmpty();
             } else if(last == null){
-                System.err.println("first date not entered");
+                throw new ExceptionDateEndEmpty();                
             } 
-            else{
+            else{ // if no error has exception has been thrown..
                 String id = m_vehiculeID.getText();
                 String name = m_vehiculeName.getText();
                 String discount = m_discount.getText();
@@ -90,7 +94,24 @@ public class FXMLAddCarToListController {
                 window.centerOnScreen();
             }
             
+        } // exception code excecuted..
+        } catch (ExceptionDatesEmpty ex) {
+            ex.getMessage();
+        } catch (ExceptionDateStartEmpty ex) {
+            ex.getMessage();
+        } catch (ExceptionDateEndEmpty ex) {
+            ex.getMessage();
+        } catch (ExceptionVehiculePriceEmpty ex) {
+            ex.getMessage();
+        } catch (ExceptionVehiculeDiscountEmpty ex) {
+            ex.getMessage();
+        } catch (ExceptionVehiculeNameEmpty ex) {
+            ex.getMessage();
+        } catch (ExceptionVehiculeIDEmpty ex) {
+            ex.getMessage();
         }
+        
+
     }
 
 }
