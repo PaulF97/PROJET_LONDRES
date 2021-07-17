@@ -11,10 +11,10 @@ import javax.swing.JOptionPane;
  *
  * @author fishe
  */
-public class ExceptionPurposeEnter extends Exception {
+public class ExceptionVehiculePriceEmpty extends Exception {
 
-    public ExceptionPurposeEnter() {
-        JOptionPane.showMessageDialog(null, "you have not spell the write purpose. You can Only write 'individual' OR 'business' ","error", JOptionPane.ERROR_MESSAGE);
+    public ExceptionVehiculePriceEmpty() {
+        JOptionPane.showMessageDialog(null, "you need to enter the vehicule price","error", JOptionPane.ERROR_MESSAGE);
     }
     
 }

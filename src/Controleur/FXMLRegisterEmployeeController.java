@@ -59,7 +59,7 @@ public class FXMLRegisterEmployeeController {
                 {
                     throw new ExceptionAdminCodes();
                 } else{ // if the login is effective
-                    Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXML_ListOfCars.fxml"));
+                    Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXMLChoiceActionEmployee.fxml"));
                     Scene tableViewScene = new Scene(tableViewParent);
                     Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
                     window.setScene(tableViewScene);
