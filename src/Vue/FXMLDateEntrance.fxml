@@ -41,8 +41,8 @@
             <Image url="@calender.jpg" />
          </image>
       </ImageView>
-      <DatePicker fx:id="m_startDate" layoutX="231.0" layoutY="142.0" onAction="#onClickedDate" />
-      <DatePicker fx:id="m_endDate" layoutX="231.0" layoutY="200.0" onAction="#onClickedDate" />
+      <DatePicker fx:id="m_startDate" layoutX="231.0" layoutY="142.0" onAction="#onClickedDate" promptText="first rental day" />
+      <DatePicker fx:id="m_endDate" layoutX="231.0" layoutY="200.0" onAction="#onClickedDate" promptText="last rental day" />
       <Button fx:id="m_backDate" layoutX="3.0" layoutY="374.0" mnemonicParsing="false" onAction="#onClickedDate" text="Back" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
    </children>
 </AnchorPane>

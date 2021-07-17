@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="520.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controleur.FXMLAddCarToListController">
+   <children>
+      <Label layoutX="101.0" layoutY="46.0" prefHeight="39.0" prefWidth="430.0" text="Enter the information of the new car please">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="50.0" fitWidth="74.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@car.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="74.0" layoutX="10.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@moto.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="74.0" layoutX="10.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+         <image>
+            <Image url="@register.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="50.0" fitWidth="74.0" layoutX="20.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <image>
+            <Image url="@register.jpg" />
+         </image>
+      </ImageView>
+      <TextField fx:id="m_rentalPrice" layoutX="242.0" layoutY="331.0" onAction="#ActionAddCar" prefHeight="25.0" prefWidth="174.0" />
+      <TextField fx:id="m_discount" layoutX="242.0" layoutY="295.0" onAction="#ActionAddCar" prefHeight="25.0" prefWidth="174.0" />
+      <TextField fx:id="m_vehiculeID" layoutX="242.0" layoutY="151.0" onAction="#ActionAddCar" prefHeight="25.0" prefWidth="174.0" />
+      <TextField fx:id="m_vehiculeName" layoutX="242.0" layoutY="186.0" onAction="#ActionAddCar" prefHeight="25.0" prefWidth="174.0" />
+      <Label layoutX="121.0" layoutY="155.0" text="Vehicule ID" />
+      <Label layoutX="121.0" layoutY="190.0" text="Vehicule model" />
+      <Label layoutX="121.0" layoutY="224.0" text="first date" />
+      <Label layoutX="121.0" layoutY="262.0" text="last date" />
+      <Label layoutX="121.0" layoutY="299.0" text="discount" />
+      <Label layoutX="121.0" layoutY="335.0" text="rental price" />
+      <DatePicker fx:id="m_firstDate" layoutX="242.0" layoutY="220.0" onAction="#ActionAddCar" promptText="firstDate" />
+      <DatePicker fx:id="m_lastDate" layoutX="242.0" layoutY="258.0" onAction="#ActionAddCar" promptText="lastDate" />
+      <Button fx:id="m_addCar" layoutX="250.0" layoutY="393.0" mnemonicParsing="false" onAction="#ActionAddCar" prefHeight="50.0" prefWidth="132.0" text="Add car">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
