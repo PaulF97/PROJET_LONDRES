@@ -11,11 +11,11 @@ package Model;
  */
 public class Customer extends Person {
     
-    protected boolean typePerson;
+    protected String typePerson;
     protected String startingDate;
     protected String endingDate;
     
-    public Customer(String firstName, String lastName, String username, String password, boolean typePerson) {
+    public Customer(String firstName, String lastName, String username, String password, String typePerson) {
         super(firstName, lastName, username, password);
         this.typePerson = typePerson;
         
@@ -40,7 +40,7 @@ public class Customer extends Person {
         return password;
     }
     
-    public boolean getType(){
+    public String getType(){
         return typePerson;
     }
 }

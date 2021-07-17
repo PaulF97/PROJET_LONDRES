@@ -12,7 +12,7 @@ package Model;
  */
 public class Individual extends MemberCustomer{
     
-    public Individual(String firstName, String lastName, String username, String password, boolean typePerson) {
+    public Individual(String firstName, String lastName, String username, String password, String typePerson) {
         super(firstName, lastName, username, password, typePerson);
     }
     

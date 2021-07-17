@@ -24,9 +24,6 @@ public class FXMLSignInPlatformController {
     private Button m_buttonSign;
 
     @FXML
-    private ToggleGroup m_purpose;
-
-    @FXML
     private RadioButton m_notAccept;
 
     @FXML
@@ -37,9 +34,6 @@ public class FXMLSignInPlatformController {
 
     @FXML
     private RadioButton m_accept;
-
-    @FXML
-    private RadioButton m_individual;
 
     @FXML
     private PasswordField m_passwordConfirm;
@@ -57,11 +51,10 @@ public class FXMLSignInPlatformController {
     private TextField m_username;
 
     @FXML
-    private RadioButton m_business;
-
-    @FXML
     private ToggleGroup m_choice;
-
+    
+    @FXML
+    private TextField m_purposeWrite;
     
     @FXML
     void onClickedSign(ActionEvent event) throws IOException {
@@ -102,24 +95,35 @@ public class FXMLSignInPlatformController {
                     throw new ExceptionUsernameEmpty();
                 } else if(m_lastName.getText().isEmpty()){ // if the last name has not been entered
                     throw new ExceptionLastNameMissing();
-                }else if(m_purpose.getSelectedToggle() != m_business && m_purpose.getSelectedToggle() != m_individual){
+                } else if(m_purposeWrite.getText().isEmpty()){
                     throw new ExceptionPurpose();
-                } else{ // if no exception has been thrown
+                } else if(!"business".equals(m_purposeWrite.getText()) && !"individual".equals(m_purposeWrite.getText())){
+                    throw new ExceptionPurposeEnter();
+                }
+                else{ // if no exception has been thrown
                     String name = m_firstName.getText();
                     String lastName = m_lastName.getText();
                     String password = m_password.getText();
                     String user = m_username.getText();
-                    boolean type = event.getSource() == m_purpose;
-                    
+                   // boolean type = event.getSource() == m_purpose;
+                    String type = m_purposeWrite.getText();
+     
+                    //Customer information = new Customer(name, lastName,user,password, type);
+                  
+                    CustomerDBQuery dataEnter = new CustomerDBQuery();
+                                        
+                    dataEnter.run("INSERT INTO `person` (`Username`, `firstname`, `lastname`, `password`, `purpose`) VALUES ('"+user+"' , '"+name+"' , '"+lastName+"' , '"+password+"' , '"+type+"')");
+
                     JOptionPane.showMessageDialog(null, "Hello " + name + " " + lastName + " thank you for sining up","sign up", JOptionPane.INFORMATION_MESSAGE);
                     
-                    Customer information = new Customer(m_firstName.getText(), m_lastName.getText(),m_username.getText(),m_password.getText(), type);
-                    
+                    /*
                     name = information.getFirstName();
                     lastName = information.getLastName();
                     password = information.getPassword();
                     user = information.getUsername();
-                    type = information.getType();    
+                    type = information.getType();*/
+                    
+                    //exit();
                 }
              // exception processing   
             } catch(ExceptionPasswordMistake e){
@@ -139,6 +143,8 @@ public class FXMLSignInPlatformController {
             } catch(ExceptionFormEmpty e){
                 e.getMessage();
             } catch(ExceptionPurpose e){
+                e.getMessage();
+            }catch(ExceptionPurposeEnter e){
                 e.getMessage();
             }
         } 

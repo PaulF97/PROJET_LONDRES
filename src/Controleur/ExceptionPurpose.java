@@ -16,6 +16,6 @@ import javax.swing.JOptionPane;
 public class ExceptionPurpose extends Exception {
     
     public ExceptionPurpose(){
-        JOptionPane.showMessageDialog(null, "you need enter the purpose","error", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(null, "you need to write the purpose","error", JOptionPane.ERROR_MESSAGE);
     }
 }
