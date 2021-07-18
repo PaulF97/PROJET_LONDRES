@@ -23,17 +23,18 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javax.swing.JOptionPane;
 
 /*
 * Bibliographie : https://www.youtube.com/watch?v=LoiQVoNil9Q&t=416s
 */
-public class FXML_ListOfCarsController implements Initializable{
+public class FXML_ListOfCarsCustomerController implements Initializable{
+
+    @FXML
+    private Button m_modifyDates;
 
     @FXML
     private Button m_exitList;
-            
-    @FXML
-    private Button m_backExit;
     
     @FXML
     private TableView<TableCar> tableCar;
@@ -60,28 +61,27 @@ public class FXML_ListOfCarsController implements Initializable{
     
     
        
-    
-    @FXML
-    void onHandleList(ActionEvent event) throws IOException {
-        if(event.getSource() == m_backExit){
-            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXMLChoiceActionEmployee.fxml"));
+        @FXML
+    void onActionListCustomer(ActionEvent event) throws IOException {
+        if(event.getSource() == m_modifyDates){
+            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXMLDateEntrance.fxml"));
             Scene tableViewScene = new Scene(tableViewParent);
             Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
             window.setScene(tableViewScene);
             window.centerOnScreen();
-            window.show();
+            window.show();            
         } else if(event.getSource() == m_exitList){
+            JOptionPane.showMessageDialog(null, "The application will close","customer information", JOptionPane.INFORMATION_MESSAGE);
             exit();
         }
     }
     
-    @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         try {
             Connection con = CarListAccess.getConnection();
             
-            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM vehicules");
+            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM vehicules WHERE first_date");
             
             while(rs.next()){
                 listOfCar.add(new TableCar(rs.getDouble("vehicule_id"), rs.getString("vehicule_name"), rs.getString("first_date"), rs.getString("last_date"), rs.getDouble("discount"), rs.getDouble("rental_price")));

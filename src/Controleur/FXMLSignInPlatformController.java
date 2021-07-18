@@ -1,7 +1,6 @@
 package Controleur;
 
 
-import Model.Customer;
 import java.io.IOException;
 import static javafx.application.Platform.exit;
 import javafx.event.ActionEvent;
@@ -112,36 +111,26 @@ public class FXMLSignInPlatformController {
                     String lastName = m_lastName.getText();
                     String password = m_password.getText();
                     String user = m_username.getText();
-                   // boolean type = event.getSource() == m_purpose;
                     String type = null;
                     
                     // set String value of the purpose
                     if(m_purpose.getSelectedToggle() == m_business){
                         type = "business";
-                    } else if(m_purpose.getSelectedToggle() == m_individual){
+                    }else if(m_purpose.getSelectedToggle() == m_individual){
                         type = "individual";
                     }
      
-                    //Customer information = new Customer(name, lastName,user,password, type);
-                    
-
-                    
-                    CustomerDBQuery dataEnter = new CustomerDBQuery();
-                    
-                  //  dataEnter.run("INSERT INTO `person` (`Username`, `firstname`, `lastname`, `password`, `business`) VALUES ('sav' , 'godineau' , '000' , '000' , '0')");
-                    
+                    // write the information of the new customer in the database
+                    CustomerDBQuery dataEnter = new CustomerDBQuery();        
                     dataEnter.run("INSERT INTO `person` (`Username`, `firstname`, `lastname`, `password`, `purpose`) VALUES ('"+user+"' , '"+name+"' , '"+lastName+"' , '"+password+"' , '"+type+"')");
-
                     JOptionPane.showMessageDialog(null, "Hello " + name + " " + lastName + " thank you for sining up","sign up", JOptionPane.INFORMATION_MESSAGE);
                     
-                    /*
-                    name = information.getFirstName();
-                    lastName = information.getLastName();
-                    password = information.getPassword();
-                    user = information.getUsername();
-                    type = information.getType();*/
-                    
-                    //exit();
+                    Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXMLDateEntrance.fxml"));
+                    Scene tableViewScene = new Scene(tableViewParent);
+                    Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                    window.setScene(tableViewScene);
+                    window.centerOnScreen();
+                    window.show();
                 }
              // exception processing   
             } catch(ExceptionPasswordMistake e){

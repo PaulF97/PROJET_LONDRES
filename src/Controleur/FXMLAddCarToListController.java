@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static javafx.application.Platform.exit;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -43,10 +44,28 @@ public class FXMLAddCarToListController {
     
     @FXML
     private Button m_addCar;
+    
+    @FXML
+    private Button m_exitAddCar;
+    
+    @FXML
+    private Button m_backAddCar;
 
     @FXML
     void ActionAddCar(ActionEvent event) throws IOException {
         
+        // optimization
+        if(event.getSource() == m_backAddCar){
+            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXMLChoiceActionEmployee.fxml"));
+            Scene tableViewScene = new Scene(tableViewParent);
+            Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            window.setScene(tableViewScene);
+            window.centerOnScreen();
+            window.show();
+        } else if(event.getSource() == m_exitAddCar){
+            exit();
+        }
+    
         try{
             if(event.getSource() == m_addCar){
             

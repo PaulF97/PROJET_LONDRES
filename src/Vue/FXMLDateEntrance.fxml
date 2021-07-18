@@ -8,25 +8,25 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controleur.FXMLDateEntranceController">
+<AnchorPane id="AnchorPane" prefHeight="551.0" prefWidth="836.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controleur.FXMLDateEntranceController">
    <children>
       <Button fx:id="m_closeDate" layoutX="564.0" layoutY="374.0" mnemonicParsing="false" onAction="#onClickedDate" text="Close" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <Button fx:id="m_validateDate" layoutX="230.0" layoutY="265.0" mnemonicParsing="false" onAction="#onClickedDate" prefHeight="68.0" prefWidth="176.0" text="Validate">
+      <Button fx:id="m_validateDate" layoutX="352.0" layoutY="305.0" mnemonicParsing="false" onAction="#onClickedDate" prefHeight="68.0" prefWidth="176.0" text="Validate">
          <font>
             <Font name="System Bold" size="27.0" />
          </font>
       </Button>
-      <Label layoutX="117.0" layoutY="18.0" text="Please enter the rental dates">
+      <Label layoutX="163.0" layoutY="12.0" prefHeight="65.0" prefWidth="487.0" text="Thank you for choosing our company">
          <font>
             <Font name="System Bold Italic" size="28.0" />
          </font>
       </Label>
-      <Label layoutX="60.0" layoutY="138.0" text="Starting date">
+      <Label layoutX="182.0" layoutY="178.0" text="Starting date">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Label layoutX="59.0" layoutY="196.0" text="Ending date">
+      <Label layoutX="181.0" layoutY="236.0" text="Ending date">
          <font>
             <Font size="22.0" />
          </font>
@@ -36,13 +36,33 @@
             <Image url="@calender.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="75.0" fitWidth="95.0" layoutX="514.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="75.0" fitWidth="95.0" layoutX="514.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@calender.jpg" />
          </image>
       </ImageView>
-      <DatePicker fx:id="m_startDate" layoutX="231.0" layoutY="142.0" onAction="#onClickedDate" promptText="first rental day" />
-      <DatePicker fx:id="m_endDate" layoutX="231.0" layoutY="200.0" onAction="#onClickedDate" promptText="last rental day" />
+      <DatePicker fx:id="m_startDate" layoutX="353.0" layoutY="182.0" onAction="#onClickedDate" promptText="first rental day" />
+      <DatePicker fx:id="m_endDate" layoutX="353.0" layoutY="240.0" onAction="#onClickedDate" promptText="last rental day" />
       <Button fx:id="m_backDate" layoutX="3.0" layoutY="374.0" mnemonicParsing="false" onAction="#onClickedDate" text="Back" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
+      <Label layoutX="163.0" layoutY="65.0" prefHeight="65.0" prefWidth="487.0" text="Please enter the dates">
+         <font>
+            <Font name="System Bold Italic" size="28.0" />
+         </font>
+      </Label>
+      <Label layoutX="197.0" layoutY="393.0" prefHeight="65.0" prefWidth="487.0" text="Note : the list of cars depends on your rental dates">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="74.0" fitWidth="78.0" layoutX="75.0" layoutY="389.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@info.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="74.0" fitWidth="78.0" layoutX="645.0" layoutY="389.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@info.jpg" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

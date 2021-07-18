@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="514.0" prefWidth="702.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controleur.FXML_ListOfCarsCustomerController">
+       <children>
+      <TableView fx:id="tableCar" layoutY="80.0" prefHeight="356.0" prefWidth="702.0" AnchorPane.bottomAnchor="0.0">
+        <columns>
+          <TableColumn fx:id="vehicule_id" prefWidth="90.0" text="Vehicule_id" />
+          <TableColumn fx:id="vehicule_type" prefWidth="114.0" text="vehicule_name" />
+            <TableColumn fx:id="availableFirst" prefWidth="91.0" text="first_date" />
+            <TableColumn fx:id="availableLast" prefWidth="117.0" text="last_date" />
+            <TableColumn fx:id="discount" minWidth="0.0" prefWidth="111.0" text="discount" />
+            <TableColumn fx:id="price" prefWidth="178.0" text="rental_Price" />
+        </columns>
+      </TableView>
+
+      <Button fx:id="m_modifyDates" layoutY="84.0" mnemonicParsing="false" onAction="#onActionListCustomer" text="Modify your dates" />
+      <Button fx:id="m_exitList" layoutX="667.0" layoutY="84.0" mnemonicParsing="false" onAction="#onActionListCustomer" text="Exit" />
+      <Label layoutX="166.0" layoutY="83.0" text="Here are the car choice accourding to your dates">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="53.0" fitWidth="68.0" layoutX="14.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@car.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="53.0" fitWidth="68.0" layoutX="24.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@moto.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 
 public class FXMLDateEntranceController {
 
-    @FXML
+  @FXML
     private DatePicker m_startDate;
 
     @FXML
@@ -27,24 +27,14 @@ public class FXMLDateEntranceController {
     private DatePicker m_endDate;
 
     @FXML
-    private Button m_backDate;
-
-    @FXML
     private Button m_validateDate;
     
-    @FXML
+    
+        @FXML
     void onClickedDate(ActionEvent event) throws IOException {
-        
-        if(event.getSource() == m_closeDate){
+         if(event.getSource() == m_closeDate){
             JOptionPane.showMessageDialog(null, "The application is about to close","information", JOptionPane.INFORMATION_MESSAGE);
             exit(); 
-        } else if(event.getSource() == m_backDate){
-            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXMLPurpose.fxml"));
-            Scene tableViewScene = new Scene(tableViewParent);
-            Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            window.setScene(tableViewScene);
-            window.centerOnScreen();
-            window.show();
         }
         
         else if(event.getSource() == m_validateDate){
@@ -66,7 +56,7 @@ public class FXMLDateEntranceController {
                     throw new ExceptionDateStartBeforeCurrent();
                 } else{
                    //JOptionPane.showMessageDialog(null, "ça marche !!!! ","test", JOptionPane.INFORMATION_MESSAGE);
-                    Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXML_ListOfCars.fxml"));
+                    Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXML_ListOfCarsCustomer.fxml"));
                     Scene tableViewScene = new Scene(tableViewParent);
                     Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
                     window.setScene(tableViewScene);
@@ -85,6 +75,6 @@ public class FXMLDateEntranceController {
             }catch(ExceptionDateLastBeforeFirst e){
                 e.getMessage();
             }  
-        }    
+        }
     }
 }
