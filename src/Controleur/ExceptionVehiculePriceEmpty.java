@@ -17,5 +17,4 @@ public class ExceptionVehiculePriceEmpty extends Exception {
     public ExceptionVehiculePriceEmpty() {
         JOptionPane.showMessageDialog(null, "you need to enter the vehicule price","error", JOptionPane.ERROR_MESSAGE);
     }
-    
 }

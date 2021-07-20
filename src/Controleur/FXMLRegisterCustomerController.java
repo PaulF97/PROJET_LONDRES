@@ -39,7 +39,8 @@ public class FXMLRegisterCustomerController {
 
     @FXML
     private TextField m_username;
-
+    
+    ProcessDataBase obj = new ProcessDataBase();
     @FXML
     void onClickedRegister(ActionEvent event) throws IOException {
 
@@ -61,20 +62,29 @@ public class FXMLRegisterCustomerController {
         */
         try{
             if(event.getSource() == m_buttonRegister ){
-                
+                 DBGetter Getdata = new DBGetter();
                  if(m_username.getText().isEmpty() && m_passwordField.getText().isEmpty()){
                     throw new ExceptionPasswordANDusernameEmpty();
                 } else if(m_passwordField.getText().isEmpty()){
                     throw new ExceptionPasswordEmpty();
                 } else if(m_username.getText().isEmpty()){
                     throw new ExceptionUsernameEmpty();
-                } else{ // if the login is succeded
-                    Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXMLPurpose.fxml"));
-                    Scene tableViewScene = new Scene(tableViewParent);
-                    Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-                    window.setScene(tableViewScene);
-                    window.centerOnScreen();
-                    window.show(); 
+                }
+                else{ // if no exceptions has been throwned
+                    boolean login;
+                    login = obj.Check_Login(m_username.getText(), m_passwordField.getText()); // check the correlation between username and password in the table
+                   
+                    // check return value of Check_Login method.
+                    if(login == true){ // true : login successful
+                        Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXMLPurpose.fxml"));
+                        Scene tableViewScene = new Scene(tableViewParent);
+                        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                        window.setScene(tableViewScene);
+                        window.centerOnScreen();
+                        window.show();  
+                    } else{ // false : throws exception because error in username or password
+                       throw new ExceptionLoginCustomerFailed();
+                    }
                 }
             }
         // exception processing   
@@ -82,8 +92,10 @@ public class FXMLRegisterCustomerController {
             e.getMessage();
         } catch (ExceptionUsernameEmpty e){ // username empty
             e.getMessage();
-        }catch(ExceptionPasswordANDusernameEmpty e){
+        }catch(ExceptionPasswordANDusernameEmpty e){ // both empty
             e.getMessage();
+        } catch (ExceptionLoginCustomerFailed ex) { // username or password incorrect
+           ex.getMessage();
         }
     }
 }

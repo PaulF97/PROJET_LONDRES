@@ -46,8 +46,25 @@ public class FXMLDateEntranceController {
     public LocalDate getLast() {
         return last;
     }
+
+    public void setFirst(LocalDate first) {
+        this.first = first;
+    }
+
+    public void setLast(LocalDate last) {
+        this.last = last;
+    }
     
-     
+    
+
+    public FXMLDateEntranceController(LocalDate first, LocalDate last) {
+        this.first = first;
+        this.last = last;
+    }
+    
+    /*
+    * Source for get value of DatePicker : https://stackoverflow.com/questions/20446026/get-value-from-date-picker
+    */
     @FXML
     void onClickedDate(ActionEvent event) throws IOException {
          if(event.getSource() == m_closeDate){
@@ -58,8 +75,8 @@ public class FXMLDateEntranceController {
         else if(event.getSource() == m_validateDate){
             try{
                 LocalDate currentDate = LocalDate.now(); // todays date
-                first = m_startDate.getValue(); // gets the first date
-                last = m_endDate.getValue(); // gets the last day
+                first = m_startDate.getValue();   // gets the first date
+                last = m_endDate.getValue();     // gets the last day
                     
                 // exception check to detect following unmatching or not coerent rental dates
                 if((first == null && last == null)){

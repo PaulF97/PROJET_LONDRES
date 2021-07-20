@@ -66,7 +66,11 @@ public class FXML_ListOfCarsCustomerController implements Initializable{
 
     ObservableList<TableCar> listOfCar = FXCollections.observableArrayList();
     
-    FXMLDateEntranceController obj = new FXMLDateEntranceController();
+    LocalDate first1 = null;
+    LocalDate last1 = null;
+    
+    FXMLDateEntranceController obj = new FXMLDateEntranceController( first1, last1);
+   
     
     @FXML
     void onActionListCustomer(ActionEvent event) throws IOException {
@@ -89,16 +93,21 @@ public class FXML_ListOfCarsCustomerController implements Initializable{
         try {
             Connection con = CarListAccess.getConnection();
             
-           LocalDate first = LocalDate.of(2021, 5, 21);
-           LocalDate last = LocalDate.of(2021, 8, 20);
+            /*LocalDate first = LocalDate.of(2021, 5, 21);
+            LocalDate last = LocalDate.of(2021, 8, 20);*/
            
-           /*    LocalDate first1 = obj.first;
-           LocalDate last1 = obj.last;
+           /* LocalDate first1 = obj.first;
+           LocalDate last1 = obj.last; */
+           
+           obj.setFirst(first1);
+           obj.setLast(last1);
            
            System.err.println(first1);
-           System.err.println(last1);*/
+           System.err.println(last1);
            
-           ResultSet rs = con.createStatement().executeQuery("SELECT * FROM `vehicules` where first_date >= '"+first+"' AND last_date <= '"+last+"'");
+           ResultSet rs = con.createStatement().executeQuery("SELECT * FROM `vehicules` ");
+
+           // ResultSet rs = con.createStatement().executeQuery("SELECT * FROM `vehicules` where first_date >= '"+first+"' AND last_date <= '"+last+"'");
             
             while(rs.next()){
                 listOfCar.add(new TableCar(rs.getDouble("vehicule_id"), rs.getString("vehicule_name"), rs.getString("first_date"), rs.getString("last_date"), rs.getDouble("discount"), rs.getDouble("rental_price")));

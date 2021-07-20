@@ -13,7 +13,8 @@ import java.sql.Statement;
 
 /**
  * This class assures the connection of the database
- * and the run() method interprets SQL commands
+ * and the run() method interprets SQL commands and reads 
+ * in database
  * Savinien Godineau 
  */
 public class CustomerDBQuery {
