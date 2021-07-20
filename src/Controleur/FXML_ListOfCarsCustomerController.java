@@ -5,6 +5,8 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,6 +23,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
@@ -30,6 +33,7 @@ import javax.swing.JOptionPane;
 */
 public class FXML_ListOfCarsCustomerController implements Initializable{
 
+    
     @FXML
     private Button m_modifyDates;
 
@@ -56,12 +60,19 @@ public class FXML_ListOfCarsCustomerController implements Initializable{
     
     @FXML
     private TableColumn<TableCar, Double> price;
+    
+    @FXML
+    private TableColumn<?, ?> m_select;
 
     ObservableList<TableCar> listOfCar = FXCollections.observableArrayList();
     
+    LocalDate first1 = null;
+    LocalDate last1 = null;
     
-       
-        @FXML
+    FXMLDateEntranceController obj = new FXMLDateEntranceController( first1, last1);
+   
+    
+    @FXML
     void onActionListCustomer(ActionEvent event) throws IOException {
         if(event.getSource() == m_modifyDates){
             Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXMLDateEntrance.fxml"));
@@ -76,12 +87,27 @@ public class FXML_ListOfCarsCustomerController implements Initializable{
         }
     }
     
+    @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        
         try {
             Connection con = CarListAccess.getConnection();
             
-            ResultSet rs = con.createStatement().executeQuery("SELECT * FROM vehicules WHERE first_date");
+            /*LocalDate first = LocalDate.of(2021, 5, 21);
+            LocalDate last = LocalDate.of(2021, 8, 20);*/
+           
+           /* LocalDate first1 = obj.first;
+           LocalDate last1 = obj.last; */
+           
+           obj.setFirst(first1);
+           obj.setLast(last1);
+           
+           System.err.println(first1);
+           System.err.println(last1);
+           
+           ResultSet rs = con.createStatement().executeQuery("SELECT * FROM `vehicules` ");
+
+           // ResultSet rs = con.createStatement().executeQuery("SELECT * FROM `vehicules` where first_date >= '"+first+"' AND last_date <= '"+last+"'");
             
             while(rs.next()){
                 listOfCar.add(new TableCar(rs.getDouble("vehicule_id"), rs.getString("vehicule_name"), rs.getString("first_date"), rs.getString("last_date"), rs.getDouble("discount"), rs.getDouble("rental_price")));
@@ -97,7 +123,7 @@ public class FXML_ListOfCarsCustomerController implements Initializable{
         availableLast.setCellValueFactory(new PropertyValueFactory<>("lastDate"));
         discount.setCellValueFactory(new PropertyValueFactory<>("discount"));
         price.setCellValueFactory(new PropertyValueFactory<>("rentalPrice"));
-       
+            
         tableCar.setItems(listOfCar);
         
     }

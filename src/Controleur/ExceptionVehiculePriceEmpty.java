@@ -8,13 +8,13 @@ package Controleur;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author fishe
+ * This personalized exception will be excecuted if
+ * the employee has not entered the vehicule price
+ * Paul fisher
  */
 public class ExceptionVehiculePriceEmpty extends Exception {
 
     public ExceptionVehiculePriceEmpty() {
         JOptionPane.showMessageDialog(null, "you need to enter the vehicule price","error", JOptionPane.ERROR_MESSAGE);
     }
-    
 }

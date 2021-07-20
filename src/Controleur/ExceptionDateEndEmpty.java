@@ -9,7 +9,8 @@ import javax.swing.JOptionPane;
 
 /**
 * This personalized exception will be excecuted if 
-* the last rental date has not been entered
+* the last rental date has not been entered by the customer
+* and employee if he want's to add a vehicule
 * author Paul Fisher
 */
 public class ExceptionDateEndEmpty extends Exception {

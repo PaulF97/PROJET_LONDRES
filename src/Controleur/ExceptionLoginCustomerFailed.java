@@ -9,14 +9,14 @@ import javax.swing.JOptionPane;
 
 /**
 * This personalized exception will be excecuted if 
-* the rental dates are not entered by the customer 
-* and the employee if he is adding a car
+* the customer has entered a incorrect username or password
+* while login
 * author Paul Fisher
 */
-public class ExceptionDatesEmpty extends Exception {
-    
-    public ExceptionDatesEmpty(){
-        JOptionPane.showMessageDialog(null, "You havn't entered the rental dates","error", JOptionPane.ERROR_MESSAGE);
+public class ExceptionLoginCustomerFailed extends Exception{
 
+    public ExceptionLoginCustomerFailed() {
+        JOptionPane.showMessageDialog(null, "The username or the password is incorrect","error", JOptionPane.ERROR_MESSAGE);
     }
+    
 }

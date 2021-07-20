@@ -12,7 +12,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- *
+ * This class assures the connection of the database
+ * and the run() method interprets SQL commands and reads 
+ * in database
  * Savinien Godineau 
  */
 public class CustomerDBQuery {
@@ -27,13 +29,15 @@ public class CustomerDBQuery {
        
     }
     
-       // Execute the query.   
+    /* 
+    * Execute the query.
+    */   
    public void run (String query){
-      getDatabaseConnection();      
+      getDatabaseConnection(); // assure connection to the database      
       try
       {
          Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);        
-         int result = stmt.executeUpdate(query);      
+         int result = stmt.executeUpdate(query); // excecute SQL commands     
          stmt.close();
          conn.close();
       }
@@ -43,6 +47,9 @@ public class CustomerDBQuery {
       }
    }
 
+   /*
+   * Connection to the database
+   */
     private void getDatabaseConnection() //Create the connection to the database.
     {
         try

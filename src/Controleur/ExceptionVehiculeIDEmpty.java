@@ -8,8 +8,9 @@ package Controleur;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author fishe
+ * This personalized exception will be excecuted if
+ * the employee has not entered the vehicule ID
+ * Paul fisher
  */
 public class ExceptionVehiculeIDEmpty extends Exception {
 
