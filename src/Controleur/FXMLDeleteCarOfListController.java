@@ -53,7 +53,7 @@ public class FXMLDeleteCarOfListController {
                     // converts to int for the BDD table
                     int id = Integer.parseInt(m_IdDelete.getText());
                     
-                     // adds the new information in the table
+                     // delete the data and update the table
                     CustomerDBQuery dataEnter = new CustomerDBQuery();                    
                     dataEnter.run("DELETE FROM `vehicules` WHERE Vehicule_id = "+id+" ");
 

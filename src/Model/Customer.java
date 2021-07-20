@@ -5,6 +5,8 @@
  */
 package Model;
 
+import java.time.LocalDate;
+
 /**
  * class that inherited of Person that will contain the information of a customer
  * author : Paul Fisher and Savinien Godineau
@@ -12,13 +14,13 @@ package Model;
 public class Customer extends Person {
     
     protected String typePerson;
-    protected String startingDate;
-    protected String endingDate;
+    protected LocalDate startingDate;
+    protected LocalDate endingDate;
     
     public Customer(String firstName, String lastName, String username, String password, String typePerson) {
         super(firstName, lastName, username, password);
         this.typePerson = typePerson;
-        
+   
     }
 
     @Override
@@ -42,5 +44,13 @@ public class Customer extends Person {
     
     public String getType(){
         return typePerson;
+    }
+
+    public LocalDate getStartingDate() {
+        return startingDate;
+    }
+    
+    public LocalDate getEndingDate() {
+        return endingDate;
     }
 }

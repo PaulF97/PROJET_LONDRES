@@ -9,7 +9,8 @@ import javax.swing.JOptionPane;
 
 /**
 * This personalized exception will be excecuted if 
-* the last rental date is before the first rental date
+* the last rental date is before the first rental date by the customer
+* and the employee if he want's to add a car
 * author Paul Fisher
 */
 public class ExceptionDateLastBeforeFirst extends Exception {

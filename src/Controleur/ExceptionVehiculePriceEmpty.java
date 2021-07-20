@@ -8,8 +8,9 @@ package Controleur;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author fishe
+ * This personalized exception will be excecuted if
+ * the employee has not entered the vehicule price
+ * Paul fisher
  */
 public class ExceptionVehiculePriceEmpty extends Exception {
 

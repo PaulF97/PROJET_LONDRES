@@ -71,7 +71,7 @@ public class FXMLAddCarToListController {
             
             LocalDate first = m_firstDate.getValue(); // gets the first date
             LocalDate last = m_lastDate.getValue(); // gets the last day
-   
+            LocalDate current = LocalDate.now();
             // exception handling
             if(m_vehiculeID.getText().isEmpty()){
                 throw new ExceptionVehiculeIDEmpty();
@@ -87,7 +87,11 @@ public class FXMLAddCarToListController {
                 throw new ExceptionDateStartEmpty();
             } else if(last == null){
                 throw new ExceptionDateEndEmpty();                
-            } 
+            } else if(last.isBefore(first)){
+                throw new ExceptionDateLastBeforeFirst();
+            } else if(first.isBefore(current)){
+                throw new ExceptionDateStartBeforeCurrent();
+            }
             else{ // if no error has exception has been thrown..
                 String id = m_vehiculeID.getText();
                 String name = m_vehiculeName.getText();
@@ -127,6 +131,10 @@ public class FXMLAddCarToListController {
         } catch (ExceptionVehiculeNameEmpty ex) {
             ex.getMessage();
         } catch (ExceptionVehiculeIDEmpty ex) {
+            ex.getMessage();
+        } catch (ExceptionDateLastBeforeFirst ex) {
+            ex.getMessage();
+        } catch (ExceptionDateStartBeforeCurrent ex) {
             ex.getMessage();
         }
         

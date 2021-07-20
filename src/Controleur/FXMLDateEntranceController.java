@@ -1,7 +1,9 @@
 package Controleur;
 
+import Model.Customer;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.logging.Logger;
 import static javafx.application.Platform.exit;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,7 +19,12 @@ import javax.swing.JOptionPane;
 
 public class FXMLDateEntranceController {
 
-  @FXML
+    public FXMLDateEntranceController() {
+    
+    }
+
+   
+    @FXML
     private DatePicker m_startDate;
 
     @FXML
@@ -29,8 +36,19 @@ public class FXMLDateEntranceController {
     @FXML
     private Button m_validateDate;
     
+    protected LocalDate first;
+    protected LocalDate last;
+
+    public LocalDate getFirst() {
+        return first;
+    }
+
+    public LocalDate getLast() {
+        return last;
+    }
     
-        @FXML
+     
+    @FXML
     void onClickedDate(ActionEvent event) throws IOException {
          if(event.getSource() == m_closeDate){
             JOptionPane.showMessageDialog(null, "The application is about to close","information", JOptionPane.INFORMATION_MESSAGE);
@@ -40,9 +58,9 @@ public class FXMLDateEntranceController {
         else if(event.getSource() == m_validateDate){
             try{
                 LocalDate currentDate = LocalDate.now(); // todays date
-                LocalDate first = m_startDate.getValue(); // gets the first date
-                LocalDate last = m_endDate.getValue(); // gets the last day
-          
+                first = m_startDate.getValue(); // gets the first date
+                last = m_endDate.getValue(); // gets the last day
+                    
                 // exception check to detect following unmatching or not coerent rental dates
                 if((first == null && last == null)){
                     throw new ExceptionDatesEmpty();
@@ -56,6 +74,9 @@ public class FXMLDateEntranceController {
                     throw new ExceptionDateStartBeforeCurrent();
                 } else{
                    //JOptionPane.showMessageDialog(null, "ça marche !!!! ","test", JOptionPane.INFORMATION_MESSAGE);
+                    System.out.println(first);
+                    System.out.println(last);
+                    
                     Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXML_ListOfCarsCustomer.fxml"));
                     Scene tableViewScene = new Scene(tableViewParent);
                     Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -77,4 +98,5 @@ public class FXMLDateEntranceController {
             }  
         }
     }
+    
 }

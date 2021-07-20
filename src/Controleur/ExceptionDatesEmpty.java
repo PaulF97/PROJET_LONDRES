@@ -9,7 +9,8 @@ import javax.swing.JOptionPane;
 
 /**
 * This personalized exception will be excecuted if 
-* the rental dates are not entered
+* the rental dates are not entered by the customer 
+* and the employee if he is adding a car
 * author Paul Fisher
 */
 public class ExceptionDatesEmpty extends Exception {

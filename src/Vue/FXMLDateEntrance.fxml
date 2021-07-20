@@ -43,7 +43,6 @@
       </ImageView>
       <DatePicker fx:id="m_startDate" layoutX="353.0" layoutY="182.0" onAction="#onClickedDate" promptText="first rental day" />
       <DatePicker fx:id="m_endDate" layoutX="353.0" layoutY="240.0" onAction="#onClickedDate" promptText="last rental day" />
-      <Button fx:id="m_backDate" layoutX="3.0" layoutY="374.0" mnemonicParsing="false" onAction="#onClickedDate" text="Back" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
       <Label layoutX="163.0" layoutY="65.0" prefHeight="65.0" prefWidth="487.0" text="Please enter the dates">
          <font>
             <Font name="System Bold Italic" size="28.0" />
