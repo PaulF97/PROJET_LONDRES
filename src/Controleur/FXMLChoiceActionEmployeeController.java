@@ -29,21 +29,21 @@ public class FXMLChoiceActionEmployeeController {
     @FXML
     void ActionChoiceCustomer(ActionEvent event) throws IOException {
         if(event.getSource() == m_displayEmployee){
-            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXML_ListOfCars.fxml"));
+            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXML_ListOfCars.fxml"));
             Scene tableViewScene = new Scene(tableViewParent);
             Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
             window.setScene(tableViewScene);
             window.centerOnScreen();
             window.show();
         } else if (event.getSource() == m_addCarEmployee){
-            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXMLAddCarToList.fxml"));
+            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLAddCarToList.fxml"));
             Scene tableViewScene = new Scene(tableViewParent);
             Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
             window.setScene(tableViewScene);
             window.centerOnScreen();
             window.show();
         } else if(event.getSource() == m_deleteEmployee){
-            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXMLDeleteCarOfList.fxml"));
+            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLDeleteCarOfList.fxml"));
             Scene tableViewScene = new Scene(tableViewParent);
             Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
             window.setScene(tableViewScene);

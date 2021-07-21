@@ -25,6 +25,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 /*
+* Display the list of cars to the employee
 * Bibliographie : https://www.youtube.com/watch?v=LoiQVoNil9Q&t=416s
 */
 public class FXML_ListOfCarsController implements Initializable{
@@ -64,7 +65,7 @@ public class FXML_ListOfCarsController implements Initializable{
     @FXML
     void onHandleList(ActionEvent event) throws IOException {
         if(event.getSource() == m_backExit){
-            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXMLChoiceActionEmployee.fxml"));
+            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLChoiceActionEmployee.fxml"));
             Scene tableViewScene = new Scene(tableViewParent);
             Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
             window.setScene(tableViewScene);

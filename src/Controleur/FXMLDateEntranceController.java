@@ -19,9 +19,7 @@ import javax.swing.JOptionPane;
 
 public class FXMLDateEntranceController {
 
-    public FXMLDateEntranceController() {
-    
-    }
+ 
 
    
     @FXML
@@ -36,8 +34,8 @@ public class FXMLDateEntranceController {
     @FXML
     private Button m_validateDate;
     
-    protected LocalDate first;
-    protected LocalDate last;
+    protected static LocalDate first;
+    protected static LocalDate last;
 
     public LocalDate getFirst() {
         return first;
@@ -48,19 +46,19 @@ public class FXMLDateEntranceController {
     }
 
     public void setFirst(LocalDate first) {
-        this.first = first;
+        FXMLDateEntranceController.first = first;
     }
 
     public void setLast(LocalDate last) {
-        this.last = last;
+        FXMLDateEntranceController.last = last;
     }
     
+    public FXMLDateEntranceController() {
+    
+    }
     
 
-    public FXMLDateEntranceController(LocalDate first, LocalDate last) {
-        this.first = first;
-        this.last = last;
-    }
+    
     
     /*
     * Source for get value of DatePicker : https://stackoverflow.com/questions/20446026/get-value-from-date-picker
@@ -94,7 +92,7 @@ public class FXMLDateEntranceController {
                     System.out.println(first);
                     System.out.println(last);
                     
-                    Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXML_ListOfCarsCustomer.fxml"));
+                    Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXML_ListOfCarsCustomer.fxml"));
                     Scene tableViewScene = new Scene(tableViewParent);
                     Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
                     window.setScene(tableViewScene);

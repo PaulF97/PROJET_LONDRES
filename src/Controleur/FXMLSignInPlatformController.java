@@ -72,7 +72,7 @@ public class FXMLSignInPlatformController {
         * close the app
         */
         if(event.getSource() == m_backSignUp){
-            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXMLAccountCheckCustomer.fxml"));
+            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLAccountCheckCustomer.fxml"));
             Scene tableViewScene = new Scene(tableViewParent);
             Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
             window.setScene(tableViewScene);
@@ -125,7 +125,7 @@ public class FXMLSignInPlatformController {
                     dataEnter.run("INSERT INTO `person` (`Username`, `firstname`, `lastname`, `password`, `purpose`) VALUES ('"+user+"' , '"+name+"' , '"+lastName+"' , '"+password+"' , '"+type+"')");
                     JOptionPane.showMessageDialog(null, "Hello " + name + " " + lastName + " thank you for sining up","sign up", JOptionPane.INFORMATION_MESSAGE);
                     
-                    Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXMLDateEntrance.fxml"));
+                    Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLDateEntrance.fxml"));
                     Scene tableViewScene = new Scene(tableViewParent);
                     Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
                     window.setScene(tableViewScene);
