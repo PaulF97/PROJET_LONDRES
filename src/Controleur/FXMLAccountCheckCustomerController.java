@@ -34,21 +34,21 @@ public class FXMLAccountCheckCustomerController {
     @FXML
     void onClickedChoice(ActionEvent event) throws IOException {
         if(event.getSource() == m_buttonYes){ // if the customer has already a account
-            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXMLRegisterCustomer.fxml"));
+            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLRegisterCustomer.fxml"));
             Scene tableViewScene = new Scene(tableViewParent);
             Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
             window.setScene(tableViewScene);
             window.centerOnScreen();
             window.show();
         } else if(event.getSource() == m_buttonNO){ // if the person is a "New Customer", he will need to sign up before continuing
-            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXMLSignInPlatform.fxml"));
+            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLSignInPlatform.fxml"));
             Scene tableViewScene = new Scene(tableViewParent);
             Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
             window.setScene(tableViewScene);
             window.centerOnScreen();
             window.show();
         } else if(event.getSource() == m_backAccountCheck){
-            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXMLSelectionPersonType.fxml"));
+            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLSelectionPersonType.fxml"));
             Scene tableViewScene = new Scene(tableViewParent);
             Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
             window.setScene(tableViewScene);

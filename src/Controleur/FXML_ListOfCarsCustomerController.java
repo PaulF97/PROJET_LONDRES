@@ -75,7 +75,7 @@ public class FXML_ListOfCarsCustomerController implements Initializable{
     @FXML
     void onActionListCustomer(ActionEvent event) throws IOException {
         if(event.getSource() == m_modifyDates){
-            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXMLDateEntrance.fxml"));
+            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLDateEntrance.fxml"));
             Scene tableViewScene = new Scene(tableViewParent);
             Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
             window.setScene(tableViewScene);

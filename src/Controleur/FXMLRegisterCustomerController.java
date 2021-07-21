@@ -46,7 +46,7 @@ public class FXMLRegisterCustomerController {
 
         
         if(event.getSource() == m_backCustomerLogin){
-            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXMLAccountCheckCustomer.fxml"));
+            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLAccountCheckCustomer.fxml"));
             Scene tableViewScene = new Scene(tableViewParent);
             Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
             window.setScene(tableViewScene);
@@ -76,7 +76,7 @@ public class FXMLRegisterCustomerController {
                    
                     // check return value of Check_Login method.
                     if(login == true){ // true : login successful
-                        Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXMLPurpose.fxml"));
+                        Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLPurpose.fxml"));
                         Scene tableViewScene = new Scene(tableViewParent);
                         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
                         window.setScene(tableViewScene);

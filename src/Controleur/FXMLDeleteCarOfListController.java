@@ -36,7 +36,7 @@ public class FXMLDeleteCarOfListController {
             if(event.getSource() == m_exit){
                 exit();
             } else if(event.getSource() == m_back){
-                Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXMLChoiceActionEmployee.fxml"));
+                Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLChoiceActionEmployee.fxml"));
                 Scene tableViewScene = new Scene(tableViewParent);
                 Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
                 window.setScene(tableViewScene);
@@ -59,7 +59,7 @@ public class FXMLDeleteCarOfListController {
 
                     JOptionPane.showMessageDialog(null, "the car has been deleted","info employee", JOptionPane.INFORMATION_MESSAGE);
 
-                    Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXMLChoiceActionEmployee.fxml"));
+                    Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLChoiceActionEmployee.fxml"));
                     Scene tableViewScene = new Scene(tableViewParent);
                     Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
                     window.setScene(tableViewScene);

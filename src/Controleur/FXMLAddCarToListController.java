@@ -56,7 +56,7 @@ public class FXMLAddCarToListController {
         
         // optimization
         if(event.getSource() == m_backAddCar){
-            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXMLChoiceActionEmployee.fxml"));
+            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLChoiceActionEmployee.fxml"));
             Scene tableViewScene = new Scene(tableViewParent);
             Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
             window.setScene(tableViewScene);
@@ -110,7 +110,7 @@ public class FXMLAddCarToListController {
 
                 JOptionPane.showMessageDialog(null, "the car has been added","info employee", JOptionPane.INFORMATION_MESSAGE);
                 
-                Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXMLChoiceActionEmployee.fxml"));
+                Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLChoiceActionEmployee.fxml"));
                 Scene tableViewScene = new Scene(tableViewParent);
                 Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
                 window.setScene(tableViewScene);

@@ -28,7 +28,7 @@ public class FXMLDocumentController {
     @FXML
     void onFirstClick(ActionEvent event) throws IOException{
         if(event.getSource() == m_buttonFirst){ // the start up page présenting our application
-            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXMLSelectionPersonType.fxml"));
+            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLSelectionPersonType.fxml"));
             Scene tableViewScene = new Scene(tableViewParent);
             Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
             window.setScene(tableViewScene);

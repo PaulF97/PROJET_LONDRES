@@ -1,6 +1,5 @@
 package Controleur;
 
-import Controleur.ExceptionAdminCodes;
 import java.io.IOException;
 import static javafx.application.Platform.exit;
 import javafx.event.ActionEvent;
@@ -37,7 +36,7 @@ public class FXMLRegisterEmployeeController {
 
         
         if(event.getSource() == m_backAdmin){ 
-            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXMLSelectionPersonType.fxml"));
+            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLSelectionPersonType.fxml"));
             Scene tableViewScene = new Scene(tableViewParent);
             Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
             window.setScene(tableViewScene);
@@ -59,7 +58,7 @@ public class FXMLRegisterEmployeeController {
                 {
                     throw new ExceptionAdminCodes();
                 } else{ // if the login is effective
-                    Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXMLChoiceActionEmployee.fxml"));
+                    Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLChoiceActionEmployee.fxml"));
                     Scene tableViewScene = new Scene(tableViewParent);
                     Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
                     window.setScene(tableViewScene);

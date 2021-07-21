@@ -64,7 +64,7 @@ public class FXML_ListOfCarsController implements Initializable{
     @FXML
     void onHandleList(ActionEvent event) throws IOException {
         if(event.getSource() == m_backExit){
-            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXMLChoiceActionEmployee.fxml"));
+            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLChoiceActionEmployee.fxml"));
             Scene tableViewScene = new Scene(tableViewParent);
             Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
             window.setScene(tableViewScene);

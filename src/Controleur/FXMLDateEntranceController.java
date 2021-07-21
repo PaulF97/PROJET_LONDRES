@@ -94,7 +94,7 @@ public class FXMLDateEntranceController {
                     System.out.println(first);
                     System.out.println(last);
                     
-                    Parent tableViewParent = FXMLLoader.load(getClass().getResource("/Vue/FXML_ListOfCarsCustomer.fxml"));
+                    Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXML_ListOfCarsCustomer.fxml"));
                     Scene tableViewScene = new Scene(tableViewParent);
                     Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
                     window.setScene(tableViewScene);
