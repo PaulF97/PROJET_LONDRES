@@ -80,15 +80,11 @@ public class FXML_ListOfCarsCustomerController implements Initializable{
         try {
             Connection con = CarListAccess.getConnection();
             
-
+           // gets the values from the DateEntranceClass
            LocalDate first = obj.getFirst();
            LocalDate last = obj.getLast();
               
-           System.err.println(first);
-           System.err.println(last);
-           
-          //ResultSet rs = con.createStatement().executeQuery("SELECT * FROM `vehicules` where first_date >= '"+first+"' AND last_date <= '"+last+"'");
-            
+   
           ResultSet rs = con.createStatement().executeQuery("SELECT vehicule_name, rental_price FROM vehicules where first_date >= '"+first+"' AND last_date <= '"+last+"'");
 
             while(rs.next()){

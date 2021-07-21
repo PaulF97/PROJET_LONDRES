@@ -10,7 +10,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="514.0" prefWidth="702.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controleur.FXML_ListOfCarsCustomerController">
        <children>
-      <TableView fx:id="tableCar" layoutY="80.0" prefHeight="356.0" prefWidth="881.0" AnchorPane.bottomAnchor="0.0">
+      <TableView fx:id="tableCar" layoutY="80.0" prefHeight="362.0" prefWidth="881.0" AnchorPane.bottomAnchor="-6.0">
         <columns>
           <TableColumn fx:id="vehicule_type" prefWidth="209.0" text="vehicule_name" />
             <TableColumn fx:id="price" prefWidth="262.0" text="rental_Price / day" />

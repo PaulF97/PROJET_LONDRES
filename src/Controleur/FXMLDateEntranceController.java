@@ -46,11 +46,11 @@ public class FXMLDateEntranceController {
     }
 
     public void setFirst(LocalDate first) {
-        this.first = first;
+        FXMLDateEntranceController.first = first;
     }
 
     public void setLast(LocalDate last) {
-        this.last = last;
+        FXMLDateEntranceController.last = last;
     }
     
     public FXMLDateEntranceController() {
