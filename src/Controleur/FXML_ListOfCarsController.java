@@ -25,6 +25,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 /*
+* Display the list of cars to the employee
 * Bibliographie : https://www.youtube.com/watch?v=LoiQVoNil9Q&t=416s
 */
 public class FXML_ListOfCarsController implements Initializable{

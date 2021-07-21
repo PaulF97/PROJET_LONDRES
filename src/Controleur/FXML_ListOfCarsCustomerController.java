@@ -29,48 +29,35 @@ import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
 /*
+* Display the cars available to the customer
+* accourding to his rental dates
 * Bibliographie : https://www.youtube.com/watch?v=LoiQVoNil9Q&t=416s
 */
 public class FXML_ListOfCarsCustomerController implements Initializable{
 
+    public ToggleGroup radioButtons = new ToggleGroup();
     
     @FXML
     private Button m_modifyDates;
 
     @FXML
     private Button m_exitList;
-    
+       
     @FXML
-    private TableView<TableCar> tableCar;
+    private TableView<TableCarCustomer> tableCar;
+  
+    @FXML
+    private TableColumn<TableCarCustomer, String> vehicule_type;
+
+    @FXML
+    private TableColumn<TableCarCustomer, Double> price;
+    
+
+
+
+    ObservableList<TableCarCustomer> listOfCarCustomer = FXCollections.observableArrayList();
       
-    @FXML
-    private TableColumn<TableCar, Double> vehicule_id;
-    
-    @FXML
-    private TableColumn<TableCar, String> vehicule_type;
-
-    @FXML
-    private TableColumn<TableCar, String> availableFirst;
-
-    @FXML
-    private TableColumn<TableCar, Double> discount;
-
-    @FXML
-    private TableColumn<TableCar, String> availableLast;
-    
-    @FXML
-    private TableColumn<TableCar, Double> price;
-    
-    @FXML
-    private TableColumn<?, ?> m_select;
-
-    ObservableList<TableCar> listOfCar = FXCollections.observableArrayList();
-    
-    LocalDate first1 = null;
-    LocalDate last1 = null;
-    
-    FXMLDateEntranceController obj = new FXMLDateEntranceController( first1, last1);
-   
+    FXMLDateEntranceController obj = new FXMLDateEntranceController();
     
     @FXML
     void onActionListCustomer(ActionEvent event) throws IOException {
@@ -93,38 +80,27 @@ public class FXML_ListOfCarsCustomerController implements Initializable{
         try {
             Connection con = CarListAccess.getConnection();
             
-            /*LocalDate first = LocalDate.of(2021, 5, 21);
-            LocalDate last = LocalDate.of(2021, 8, 20);*/
-           
-           /* LocalDate first1 = obj.first;
-           LocalDate last1 = obj.last; */
-           
-           obj.setFirst(first1);
-           obj.setLast(last1);
-           
-           System.err.println(first1);
-           System.err.println(last1);
-           
-           ResultSet rs = con.createStatement().executeQuery("SELECT * FROM `vehicules` ");
 
-           // ResultSet rs = con.createStatement().executeQuery("SELECT * FROM `vehicules` where first_date >= '"+first+"' AND last_date <= '"+last+"'");
+           LocalDate first = obj.getFirst();
+           LocalDate last = obj.getLast();
+              
+           System.err.println(first);
+           System.err.println(last);
+           
+          //ResultSet rs = con.createStatement().executeQuery("SELECT * FROM `vehicules` where first_date >= '"+first+"' AND last_date <= '"+last+"'");
             
+          ResultSet rs = con.createStatement().executeQuery("SELECT vehicule_name, rental_price FROM vehicules where first_date >= '"+first+"' AND last_date <= '"+last+"'");
+
             while(rs.next()){
-                listOfCar.add(new TableCar(rs.getDouble("vehicule_id"), rs.getString("vehicule_name"), rs.getString("first_date"), rs.getString("last_date"), rs.getDouble("discount"), rs.getDouble("rental_price")));
+                listOfCarCustomer.add(new TableCarCustomer(rs.getString("vehicule_name"), rs.getDouble("rental_price")));
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(FXML_ListOfCarsController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        vehicule_id.setCellValueFactory(new PropertyValueFactory<>("id"));
-        vehicule_type.setCellValueFactory(new PropertyValueFactory<>("name"));
-        availableFirst.setCellValueFactory(new PropertyValueFactory<>("firstDate"));
-        availableLast.setCellValueFactory(new PropertyValueFactory<>("lastDate"));
-        discount.setCellValueFactory(new PropertyValueFactory<>("discount"));
-        price.setCellValueFactory(new PropertyValueFactory<>("rentalPrice"));
-            
-        tableCar.setItems(listOfCar);
-        
+        vehicule_type.setCellValueFactory(new PropertyValueFactory<>("vehiculeName"));
+        price.setCellValueFactory(new PropertyValueFactory<>("vehiculePrice"));
+        tableCar.setItems(listOfCarCustomer);
     }
 }

@@ -19,9 +19,7 @@ import javax.swing.JOptionPane;
 
 public class FXMLDateEntranceController {
 
-    public FXMLDateEntranceController() {
-    
-    }
+ 
 
    
     @FXML
@@ -36,8 +34,8 @@ public class FXMLDateEntranceController {
     @FXML
     private Button m_validateDate;
     
-    protected LocalDate first;
-    protected LocalDate last;
+    protected static LocalDate first;
+    protected static LocalDate last;
 
     public LocalDate getFirst() {
         return first;
@@ -55,12 +53,12 @@ public class FXMLDateEntranceController {
         this.last = last;
     }
     
+    public FXMLDateEntranceController() {
+    
+    }
     
 
-    public FXMLDateEntranceController(LocalDate first, LocalDate last) {
-        this.first = first;
-        this.last = last;
-    }
+    
     
     /*
     * Source for get value of DatePicker : https://stackoverflow.com/questions/20446026/get-value-from-date-picker

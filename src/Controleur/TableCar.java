@@ -6,8 +6,9 @@
 package Controleur;
 
 /**
- *
- * @author fishe
+ * Display all the cars information
+ * to the employee
+ * Paul fisher
  */
 public class TableCar {
     
@@ -74,7 +75,4 @@ public class TableCar {
     public void setRentalPrice(double rentalPrice) {
         this.rentalPrice = rentalPrice;
     }
-    
-    
-    
 }
