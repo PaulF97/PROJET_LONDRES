@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="690.0" prefWidth="943.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controleur.FXMLReservationInformationController">
+   <children>
+      <Label layoutX="191.0" layoutY="38.0" prefHeight="35.0" prefWidth="563.0" text="Hello, Here are your reservation information" AnchorPane.leftAnchor="191.0" AnchorPane.rightAnchor="189.0">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="83.0" fitWidth="107.0" layoutX="105.0" layoutY="169.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@client.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="83.0" fitWidth="107.0" layoutX="115.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@info.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="63.0" layoutY="137.0" text="First name" AnchorPane.leftAnchor="56.0">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="63.0" layoutY="182.0" text="Last name" AnchorPane.leftAnchor="56.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="58.0" layoutY="295.0" text="Return date" AnchorPane.leftAnchor="56.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="63.0" layoutY="239.0" text="Recuparation date" AnchorPane.leftAnchor="56.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="56.0" layoutY="333.0" text="Car name" AnchorPane.leftAnchor="56.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="56.0" layoutY="369.0" text="Purpose" AnchorPane.leftAnchor="56.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="50.0" layoutY="494.0" text="Thank you for choosing our company, we hope you enjoyed the experience">
+         <font>
+            <Font name="System Bold Italic" size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="m_test" layoutX="361.0" layoutY="86.0" mnemonicParsing="false" onAction="#onActionRecap" prefHeight="25.0" prefWidth="224.0" text="Click to display the rental info" />
+      <Button fx:id="m_bookingConfirm" layoutX="334.0" layoutY="582.0" mnemonicParsing="false" onAction="#onActionRecap" prefHeight="50.0" prefWidth="254.0" text="Confirm your booking">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="83.0" fitWidth="107.0" layoutX="115.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+         <image>
+            <Image url="@moto.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="83.0" fitWidth="107.0" layoutX="115.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <image>
+            <Image url="@car.jpg" />
+         </image>
+      </ImageView>
+      <Label fx:id="m_firstLabel" layoutX="407.0" layoutY="137.0" prefHeight="36.0" prefWidth="224.0" AnchorPane.leftAnchor="334.0">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="m_lastLabel" layoutX="407.0" layoutY="182.0" prefHeight="36.0" prefWidth="224.0" AnchorPane.leftAnchor="334.0">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="m_RentalFirstLabel" layoutX="401.0" layoutY="239.0" prefHeight="36.0" prefWidth="224.0" AnchorPane.leftAnchor="334.0">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="m_RentalLastLabel" layoutX="401.0" layoutY="294.0" prefHeight="36.0" prefWidth="224.0" AnchorPane.leftAnchor="334.0">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="m_carNameLabel" layoutX="380.0" layoutY="333.0" prefHeight="36.0" prefWidth="224.0" AnchorPane.leftAnchor="334.0">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="m_purposeLabel" layoutX="361.0" layoutY="369.0" prefHeight="36.0" prefWidth="224.0" AnchorPane.leftAnchor="334.0">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="52.0" layoutY="413.0" text="Total Price" AnchorPane.leftAnchor="56.0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="m_totalPrice" layoutX="334.0" layoutY="413.0" prefHeight="36.0" prefWidth="224.0" textAlignment="CENTER" AnchorPane.leftAnchor="334.0">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="56.0" layoutY="449.0" text="Please enter a email adress">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="m_emailField" layoutX="416.0" layoutY="454.0" onAction="#onActionRecap" promptText="enter mail adresse" />
+      <Label layoutX="54.0" layoutY="540.0" text="Note : a email will be sent with all the informations">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

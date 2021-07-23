@@ -123,9 +123,9 @@ public class FXMLSignInPlatformController {
                     // write the information of the new customer in the database
                     CustomerDBQuery dataEnter = new CustomerDBQuery();        
                     dataEnter.run("INSERT INTO `person` (`Username`, `firstname`, `lastname`, `password`, `purpose`) VALUES ('"+user+"' , '"+name+"' , '"+lastName+"' , '"+password+"' , '"+type+"')");
-                    JOptionPane.showMessageDialog(null, "Hello " + name + " " + lastName + " thank you for sining up","sign up", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Hello " + name + " " + lastName + " thank you for sining up, you will register to confirm","sign up", JOptionPane.INFORMATION_MESSAGE);
                     
-                    Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLDateEntrance.fxml"));
+                    Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLRegisterCustomer.fxml"));
                     Scene tableViewScene = new Scene(tableViewParent);
                     Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
                     window.setScene(tableViewScene);
