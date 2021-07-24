@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controleur.FXMLFinanceResultsController">
+   <children>
+      <Label layoutX="126.0" layoutY="23.0" text="Financial results of company">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="52.0" fitWidth="85.0" layoutX="46.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@finance.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="71.0" fitWidth="85.0" layoutX="56.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+         <image>
+            <Image url="@car.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="71.0" fitWidth="85.0" layoutX="66.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <image>
+            <Image url="@moto.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="71.0" fitWidth="85.0" layoutX="76.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@finance.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="79.0" layoutY="109.0" text="Number of Rentals">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="79.0" layoutY="162.0" text="money gain">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="m_CA" layoutX="267.0" layoutY="162.0" prefHeight="27.0" prefWidth="132.0" AnchorPane.leftAnchor="267.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="m_rentals" layoutX="279.0" layoutY="109.0" prefHeight="27.0" prefWidth="132.0" AnchorPane.leftAnchor="267.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="m_return" layoutX="274.0" layoutY="354.0" mnemonicParsing="false" onAction="#onEmployeeFinance" text="back" />
+   </children>
+</AnchorPane>

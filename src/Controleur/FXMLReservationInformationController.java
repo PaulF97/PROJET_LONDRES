@@ -75,9 +75,27 @@ public class FXMLReservationInformationController {
     protected static String priceToString;
     protected static String carName;
     protected static String mail;
+    protected static int numberOfOrders = 0;
+    protected static double moneyGenerated = 0;
+
+    public double getMoneyGenerated() {
+        return moneyGenerated;
+    }
+
+    public void setMoneyGenerated(double moneyGenerated) {
+        FXMLReservationInformationController.moneyGenerated = moneyGenerated;
+    }
 
     public FXMLReservationInformationController() {}
+
     
+    public int getNumberOfOrders() {
+        return numberOfOrders;
+    }
+
+    public void setNumberOfOrders(int numberOfOrders) {
+        FXMLReservationInformationController.numberOfOrders = numberOfOrders;
+    }
     
     // getters and setters
     public String getPurposeRecap() {
@@ -209,6 +227,10 @@ public class FXMLReservationInformationController {
             dataUpdate.run("UPDATE vehicules SET first_date ='"+last+"' WHERE vehicules.Vehicule_id = "+idCar); // updates the first date
             dataUpdate.run("UPDATE vehicules SET last_date ='"+availableLast+"' WHERE vehicules.Vehicule_id = "+idCar);  // updates the last date
             
+            numberOfOrders++; // get accumulation of orders
+            moneyGenerated = moneyGenerated + rentalPrice; // get accumulation of money gain
+            
+            // goes back to main page
             Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLDocument.fxml"));
             Scene tableViewScene = new Scene(tableViewParent);
             Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
