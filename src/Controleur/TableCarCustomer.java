@@ -12,24 +12,15 @@ package Controleur;
  */
 public class TableCarCustomer {
     
-    protected double id;
+
     protected String vehiculeName;
     protected double vehiculePrice;
 
-    public TableCarCustomer(double id, String vehiculeName, double vehiculePrice) {
-        this.id = id;
+    public TableCarCustomer(String vehiculeName, double vehiculePrice) {
         this.vehiculeName = vehiculeName;
         this.vehiculePrice = vehiculePrice;
     }
-
-    public double getId() {
-        return id;
-    }
-
-    public void setId(double id) {
-        this.id = id;
-    }
-
+    
     public String getVehiculeName() {
         return vehiculeName;
     }

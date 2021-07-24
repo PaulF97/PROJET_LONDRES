@@ -12,9 +12,8 @@
        <children>
       <TableView fx:id="tableCar" layoutY="161.0" onMouseClicked="#getSelect" prefHeight="362.0" prefWidth="881.0" AnchorPane.bottomAnchor="177.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="161.0">
         <columns>
-         <TableColumn fx:id="id" prefWidth="293.0" resizable="false" text="vehicule_id" />
-          <TableColumn fx:id="vehicule_type" prefWidth="293.0" resizable="false" text="vehicule_name" />
-            <TableColumn fx:id="rentalPrice" prefWidth="293.0" resizable="false" text="price / per day" />
+          <TableColumn fx:id="vehicule_type" prefWidth="440.0" resizable="false" text="vehicule_name" />
+            <TableColumn fx:id="rentalPrice" prefWidth="440.0" resizable="false" text="price / per day" />
         </columns>
       </TableView>
 
@@ -35,7 +34,7 @@
             <Image url="@moto.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="68.0" layoutY="547.0" text="Please enter the vehicule id : ">
+      <Label layoutX="68.0" layoutY="547.0" text="Please enter the vehicule name : ">
          <font>
             <Font size="18.0" />
          </font>
@@ -46,5 +45,20 @@
             <Font name="System Bold" size="23.0" />
          </font>
       </Button>
+      <Label layoutX="145.0" layoutY="83.0" prefHeight="27.0" prefWidth="106.0" text="Rental dates">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="m_firstDate" layoutX="283.0" layoutY="83.0" prefHeight="27.0" prefWidth="127.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="m_lastDate" layoutX="400.0" layoutY="83.0" prefHeight="27.0" prefWidth="127.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -5,6 +5,11 @@
  */
 package Controleur;
 
+import java.io.IOException;
+import java.net.URL;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 import java.util.concurrent.TimeUnit;
@@ -16,6 +21,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javax.swing.JOptionPane;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import javax.mail.*;
 import javax.mail.internet.*;
 import javax.activation.*;
@@ -65,8 +78,8 @@ public class FXMLReservationInformationController {
 
     public FXMLReservationInformationController() {}
     
+    
     // getters and setters
-
     public String getPurposeRecap() {
         return purposeRecap;
     }
@@ -136,6 +149,7 @@ public class FXMLReservationInformationController {
     FXMLDateEntranceController getRentalDates = new FXMLDateEntranceController();
     FXML_ListOfCarsCustomerController getCustomerInfo = new FXML_ListOfCarsCustomerController();
     DBGetter getCarName = new DBGetter();
+    CustomerDBQuery dataUpdate = new CustomerDBQuery(); 
 
     /*
     * Source for email : 
@@ -143,8 +157,12 @@ public class FXMLReservationInformationController {
     */
     
     @FXML
-    void onActionRecap(ActionEvent event) throws InterruptedException {
-                
+    void onActionRecap(ActionEvent event) throws InterruptedException, MessagingException, IOException {
+          
+        int idCar = getCustomerInfo.getIdCar();
+        String idToString = Integer.toString(idCar);
+        double rentalPrice = getCustomerInfo.getPrice();
+        
         // gets the rental dates
         first = getRentalDates.getFirst();
         last = getRentalDates.getLast();
@@ -153,11 +171,9 @@ public class FXMLReservationInformationController {
         purposeRecap = getCustomerInfo.getPurpose();
         firstNamePurpose = getCustomerInfo.getName();
         lastNamePurpose = getCustomerInfo.getLastName();
-        int idCar = getCustomerInfo.getIdCar();
-        String idToString = Integer.toString(idCar);
-        double rentalPrice = getCustomerInfo.getPrice();
         priceToString = Integer.toString((int) rentalPrice);
         carName = getCarName.GetString("vehicules", idCar, "vehicule_name");
+        int daysTakenByCustomer = getCustomerInfo.getDays();
         
         if(event.getSource() == m_test){
             m_firstLabel.setText(firstNamePurpose);
@@ -167,26 +183,38 @@ public class FXMLReservationInformationController {
             m_carNameLabel.setText(carName);
             m_purposeLabel.setText(purposeRecap);
             m_totalPrice.setText(priceToString);
-      
+            System.err.println(idCar);
         }
         
-        try{
-            if(event.getSource() == m_bookingConfirm){
-                mail = m_emailField.getText();
-                if(mail.isEmpty()){ // if email empty
-                    throw new ExceptionMailConfirmationEmpty();
-                } else{
-                    JOptionPane.showMessageDialog(null, "You the reservation is being proceded","info", JOptionPane.INFORMATION_MESSAGE);
-                    TimeUnit.SECONDS.sleep(2);
-                    JOptionPane.showMessageDialog(null, "The reservation is validated. thank you for choosing us " +firstNamePurpose+ " " + lastNamePurpose+ "","info", JOptionPane.INFORMATION_MESSAGE);
-                    MailSendInfo mailSend = new MailSendInfo();
-                }
-                exit();
-           }  
+        if(event.getSource() == m_bookingConfirm){
+            mail = m_emailField.getText();
+            /*                if(mail.isEmpty()){ // if email empty
+            throw new ExceptionMailConfirmationEmpty();
+            } else{
+            JOptionPane.showMessageDialog(null, "You the reservation is being proceded","info", JOptionPane.INFORMATION_MESSAGE);
+            TimeUnit.SECONDS.sleep(2);
+            JOptionPane.showMessageDialog(null, "The reservation is validated. thank you for choosing us " +firstNamePurpose+ " " + lastNamePurpose+ "","info", JOptionPane.INFORMATION_MESSAGE);
+            dataUpdate.run("UPDATE vehicules SET first_date ='"+first+"' WHERE vehicules.Vehicule_id = "+idCar); // updates the first date
+            dataUpdate.run("UPDATE vehicules SET last_date ='"+last+"' WHERE vehicules.Vehicule_id = "+idCar);  // updates the last date
             
-        } catch (ExceptionMailConfirmationEmpty ex) {
-            ex.getMessage();
+            MailSendInfo mailSend = new MailSendInfo();
+            //mailSend.send();
+            }*/
+            
+            
+            JOptionPane.showMessageDialog(null, "You the reservation is being proceded","info", JOptionPane.INFORMATION_MESSAGE);
+            TimeUnit.SECONDS.sleep(2);
+            JOptionPane.showMessageDialog(null, "The reservation is validated. thank you for choosing us " +firstNamePurpose+ " " + lastNamePurpose+ "","info", JOptionPane.INFORMATION_MESSAGE);
+            LocalDate availableLast = last.plusDays(daysTakenByCustomer + 1); // sets the last day when the car will be available after rental period
+            dataUpdate.run("UPDATE vehicules SET first_date ='"+last+"' WHERE vehicules.Vehicule_id = "+idCar); // updates the first date
+            dataUpdate.run("UPDATE vehicules SET last_date ='"+availableLast+"' WHERE vehicules.Vehicule_id = "+idCar);  // updates the last date
+            
+            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLDocument.fxml"));
+            Scene tableViewScene = new Scene(tableViewParent);
+            Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            window.setScene(tableViewScene);
+            window.centerOnScreen();
+            window.show();
         }
     }
-    
 }

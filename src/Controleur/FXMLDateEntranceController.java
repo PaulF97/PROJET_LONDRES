@@ -20,8 +20,6 @@ import javax.swing.JOptionPane;
 public class FXMLDateEntranceController {
 
  
-
-   
     @FXML
     private DatePicker m_startDate;
 

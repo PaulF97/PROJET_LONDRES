@@ -52,7 +52,29 @@ public class DBGetter {
          ex.printStackTrace();
       }
       return data;
-   }   
+   }
+   
+    public int GetPrimaryID (String table_name, String carname, String column_name){
+        getDatabaseConnection();
+        String data = "xxx";
+        try
+        {
+           Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+           String query = "SELECT * FROM "+table_name+" WHERE vehicule_name LIKE '"+carname+"'";
+           ResultSet results = stmt.executeQuery(query);
+           while (results.next()) { 
+                // Get the data from the current row using the column index
+                data = results.getString(1);
+                // Get the data from the current row using the column name
+                data = results.getString(column_name);
+            }
+            stmt.close();
+            conn.close();
+        }catch (SQLException ex){
+           ex.printStackTrace();
+        }
+        return Integer.parseInt(data);
+   }
    
    //This method has exactly the same role and use as the previous one except that it will return an int and not a string, which is more convenient for processing.
    public int GetInt (String table_name, int line_number, String column_name){      
