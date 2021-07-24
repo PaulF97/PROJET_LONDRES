@@ -11,12 +11,23 @@ package Controleur;
  * Paul fisher
  */
 public class TableCarCustomer {
+    
+    protected double id;
     protected String vehiculeName;
     protected double vehiculePrice;
 
-    public TableCarCustomer(String vehiculeName, double vehiculePrice) {
+    public TableCarCustomer(double id, String vehiculeName, double vehiculePrice) {
+        this.id = id;
         this.vehiculeName = vehiculeName;
         this.vehiculePrice = vehiculePrice;
+    }
+
+    public double getId() {
+        return id;
+    }
+
+    public void setId(double id) {
+        this.id = id;
     }
 
     public String getVehiculeName() {
@@ -34,5 +45,7 @@ public class TableCarCustomer {
     public void setVehiculePrice(double vehiculePrice) {
         this.vehiculePrice = vehiculePrice;
     }
+
+
 
 }

@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.Month;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,8 +23,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
@@ -38,29 +40,134 @@ public class FXML_ListOfCarsCustomerController implements Initializable{
     public ToggleGroup radioButtons = new ToggleGroup();
     
     @FXML
-    private Button m_modifyDates;
+    private TableColumn<TableCarCustomer, Double> rentalPrice;
 
-    @FXML
-    private Button m_exitList;
-       
-    @FXML
-    private TableView<TableCarCustomer> tableCar;
-  
     @FXML
     private TableColumn<TableCarCustomer, String> vehicule_type;
 
     @FXML
-    private TableColumn<TableCarCustomer, Double> price;
+    private TableView<TableCarCustomer> tableCar;
+
+    @FXML
+    private TableColumn<TableCarCustomer, Double> id;
+
+    @FXML
+    private Button m_modifyDates;
     
+    @FXML
+    private Button m_buttonChooseCar;
 
+    @FXML
+    private Button m_exitList;
 
+    @FXML
+    private TextField m_vehiculeChoice;
+    
+    ArrayList<String> listOfCarsCustomers = new ArrayList<>(10);
 
     ObservableList<TableCarCustomer> listOfCarCustomer = FXCollections.observableArrayList();
       
-    FXMLDateEntranceController obj = new FXMLDateEntranceController();
+    // static variables
+    protected static String purpose;
+    protected static String carName;
+    protected static int idCar;
+    protected static String name;
+    protected static String lastName;
+    protected static double price;
     
-    @FXML
+    // classes instances
+    FXMLDateEntranceController obj = new FXMLDateEntranceController();
+    ProcessDataBase calculatePrice = new ProcessDataBase();
+    DBGetter getCustomerPurpose = new DBGetter();
+    FXMLRegisterCustomerController getUser = new FXMLRegisterCustomerController();
+    
+    // gets the values from the DateEntranceClass
+    LocalDate first = obj.getFirst();
+    LocalDate last = obj.getLast();
+
+    // gets the user value during registration
+    String userLogin = getUser.getUser();
+    
+    public FXML_ListOfCarsCustomerController() {}
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        FXML_ListOfCarsCustomerController.price = price;
+    }
+
+    
+    public int getIdCar() {
+        return idCar;
+    }
+
+    public void setIdCar(int idCar) {
+        FXML_ListOfCarsCustomerController.idCar = idCar;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        FXML_ListOfCarsCustomerController.name = name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        FXML_ListOfCarsCustomerController.lastName = lastName;
+    }
+
+    
+    public String getCarName() {
+        return carName;
+    }
+
+    public static void setCarName(String carName) {
+        FXML_ListOfCarsCustomerController.carName = carName;
+    }
+
+    public String getPurpose() {
+        return purpose;
+    }
+
+    public void setPurpose(String purpose) {
+        FXML_ListOfCarsCustomerController.purpose = purpose;
+    }
+    
+    
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        
+        try {
+            Connection con = CarListAccess.getConnection();
+
+            ResultSet rs = con.createStatement().executeQuery("SELECT vehicule_id, vehicule_name, rental_price FROM vehicules where first_date >= '"+first+"' AND last_date <= '"+last+"'");
+          
+            while(rs.next()){
+                listOfCarCustomer.add(new TableCarCustomer(rs.getDouble("vehicule_id"),rs.getString("vehicule_name"), rs.getDouble("rental_price")));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(FXML_ListOfCarsController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        id.setCellValueFactory(new PropertyValueFactory<>("id"));
+        vehicule_type.setCellValueFactory(new PropertyValueFactory<>("vehiculeName"));
+        rentalPrice.setCellValueFactory(new PropertyValueFactory<>("vehiculePrice"));
+     
+        tableCar.setItems(listOfCarCustomer);
+    
+    }
+    
+       @FXML
     void onActionListCustomer(ActionEvent event) throws IOException {
+        // additional options
         if(event.getSource() == m_modifyDates){
             Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLDateEntrance.fxml"));
             Scene tableViewScene = new Scene(tableViewParent);
@@ -72,31 +179,42 @@ public class FXML_ListOfCarsCustomerController implements Initializable{
             JOptionPane.showMessageDialog(null, "The application will close","customer information", JOptionPane.INFORMATION_MESSAGE);
             exit();
         }
+        
+        // choice of car
+        try{
+
+            if(event.getSource() == m_buttonChooseCar){
+                if(m_vehiculeChoice.getText().isEmpty()){
+                    throw new ExceptionCarNotChoosen();
+                }else {
+                    idCar = Integer.parseInt(m_vehiculeChoice.getText());
+                    String test = m_vehiculeChoice.getText();
+                    purpose = getCustomerPurpose.GetStringUser("person", userLogin, "purpose"); // gets the purpose of the customer
+                    price = calculatePrice.price_calculation(idCar,purpose, first, last);
+    
+                    name = getCustomerPurpose.GetStringUser("person", userLogin, "firstname"); // gets the first name matching with the username
+                    lastName = getCustomerPurpose.GetStringUser("person", userLogin, "lastname"); // gets the last name matching with the username
+                    
+                    Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLReservationInformation.fxml"));
+                    Scene tableViewScene = new Scene(tableViewParent);
+                    Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                    window.setScene(tableViewScene);
+                    window.centerOnScreen();
+                    window.show();
+                }
+            }
+        } catch (ExceptionCarNotChoosen ex) {
+            ex.getMessage();
+        }
     }
     
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        
-        try {
-            Connection con = CarListAccess.getConnection();
-            
-           // gets the values from the DateEntranceClass
-           LocalDate first = obj.getFirst();
-           LocalDate last = obj.getLast();
-              
-   
-          ResultSet rs = con.createStatement().executeQuery("SELECT vehicule_name, rental_price FROM vehicules where first_date >= '"+first+"' AND last_date <= '"+last+"'");
-
-            while(rs.next()){
-                listOfCarCustomer.add(new TableCarCustomer(rs.getString("vehicule_name"), rs.getDouble("rental_price")));
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(FXML_ListOfCarsController.class.getName()).log(Level.SEVERE, null, ex);
+    int index = -1;
+    @FXML
+    void getSelect(MouseEvent event) {
+        index = tableCar.getSelectionModel().getSelectedIndex();
+        if(index <= -1){
+            return;
         }
-        
-        vehicule_type.setCellValueFactory(new PropertyValueFactory<>("vehiculeName"));
-        price.setCellValueFactory(new PropertyValueFactory<>("vehiculePrice"));
-        tableCar.setItems(listOfCarCustomer);
+        System.err.println("test");
     }
 }

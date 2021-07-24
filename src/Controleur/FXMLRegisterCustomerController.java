@@ -40,6 +40,29 @@ public class FXMLRegisterCustomerController {
     @FXML
     private TextField m_username;
     
+    protected static String user;
+    protected static String password;
+
+    public FXMLRegisterCustomerController() {}
+
+    public String getUser() {
+        return user;
+    }
+
+    public static void setUser(String user) {
+        FXMLRegisterCustomerController.user = user;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public static void setPassword(String password) {
+        FXMLRegisterCustomerController.password = password;
+    }
+    
+    
+    
     ProcessDataBase obj = new ProcessDataBase();
     @FXML
     void onClickedRegister(ActionEvent event) throws IOException {
@@ -63,20 +86,22 @@ public class FXMLRegisterCustomerController {
         try{
             if(event.getSource() == m_buttonRegister ){
                  DBGetter Getdata = new DBGetter();
-                 if(m_username.getText().isEmpty() && m_passwordField.getText().isEmpty()){
+                 user = m_username.getText();
+                 password = m_passwordField.getText();
+                 if(user.isEmpty() && password.isEmpty()){
                     throw new ExceptionPasswordANDusernameEmpty();
-                } else if(m_passwordField.getText().isEmpty()){
+                } else if(password.isEmpty()){
                     throw new ExceptionPasswordEmpty();
-                } else if(m_username.getText().isEmpty()){
+                } else if(user.isEmpty()){
                     throw new ExceptionUsernameEmpty();
                 }
                 else{ // if no exceptions has been throwned
                     boolean login;
-                    login = obj.Check_Login(m_username.getText(), m_passwordField.getText()); // check the correlation between username and password in the table
+                    login = obj.Check_Login(user, password); // check the correlation between username and password in the table
                    
                     // check return value of Check_Login method.
                     if(login == true){ // true : login successful
-                        Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLPurpose.fxml"));
+                        Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLDateEntrance.fxml"));
                         Scene tableViewScene = new Scene(tableViewParent);
                         Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
                         window.setScene(tableViewScene);

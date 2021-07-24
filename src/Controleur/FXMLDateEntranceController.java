@@ -57,9 +57,6 @@ public class FXMLDateEntranceController {
     
     }
     
-
-    
-    
     /*
     * Source for get value of DatePicker : https://stackoverflow.com/questions/20446026/get-value-from-date-picker
     */
@@ -88,9 +85,6 @@ public class FXMLDateEntranceController {
                 } else if(first.isBefore(currentDate)){
                     throw new ExceptionDateStartBeforeCurrent();
                 } else{
-                   //JOptionPane.showMessageDialog(null, "ça marche !!!! ","test", JOptionPane.INFORMATION_MESSAGE);
-                    System.out.println(first);
-                    System.out.println(last);
                     
                     Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXML_ListOfCarsCustomer.fxml"));
                     Scene tableViewScene = new Scene(tableViewParent);

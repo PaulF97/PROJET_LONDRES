@@ -8,13 +8,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="514.0" prefWidth="702.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controleur.FXML_ListOfCarsCustomerController">
+<AnchorPane id="AnchorPane" maxWidth="881.0" onMouseClicked="#getSelect" prefHeight="700.0" prefWidth="881.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controleur.FXML_ListOfCarsCustomerController">
        <children>
-      <TableView fx:id="tableCar" layoutY="80.0" prefHeight="362.0" prefWidth="881.0" AnchorPane.bottomAnchor="-6.0">
+      <TableView fx:id="tableCar" layoutY="161.0" onMouseClicked="#getSelect" prefHeight="362.0" prefWidth="881.0" AnchorPane.bottomAnchor="177.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="161.0">
         <columns>
-          <TableColumn fx:id="vehicule_type" prefWidth="209.0" text="vehicule_name" />
-            <TableColumn fx:id="price" prefWidth="262.0" text="rental_Price / day" />
-            <TableColumn fx:id="m_select" prefWidth="408.0" text="Select the car" />
+         <TableColumn fx:id="id" prefWidth="293.0" resizable="false" text="vehicule_id" />
+          <TableColumn fx:id="vehicule_type" prefWidth="293.0" resizable="false" text="vehicule_name" />
+            <TableColumn fx:id="rentalPrice" prefWidth="293.0" resizable="false" text="price / per day" />
         </columns>
       </TableView>
 
@@ -35,5 +35,16 @@
             <Image url="@moto.jpg" />
          </image>
       </ImageView>
+      <Label layoutX="68.0" layoutY="547.0" text="Please enter the vehicule id : ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="m_vehiculeChoice" layoutX="378.0" layoutY="548.0" prefHeight="25.0" prefWidth="221.0" promptText="enter the vehicule id" />
+      <Button fx:id="m_buttonChooseCar" layoutX="395.0" layoutY="600.0" mnemonicParsing="false" onAction="#onActionListCustomer" prefHeight="62.0" prefWidth="137.0" text="Book">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

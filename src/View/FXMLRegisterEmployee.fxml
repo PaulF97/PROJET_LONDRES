@@ -11,7 +11,7 @@
    <children>
       <SplitPane dividerPositions="0.2839506172839506" orientation="VERTICAL" prefHeight="407.0" prefWidth="600.0">
         <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" SplitPane.resizableWithParent="false">
                <children>
                   <Label layoutX="108.0" layoutY="42.0" text="Please enter your administrator information">
                      <font>
@@ -20,7 +20,7 @@
                   </Label>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" SplitPane.resizableWithParent="false">
                <children>
                   <PasswordField fx:id="m_passwordAdmin" layoutX="241.0" layoutY="119.0" />
                   <TextField fx:id="m_userAdmin" layoutX="241.0" layoutY="53.0" />
