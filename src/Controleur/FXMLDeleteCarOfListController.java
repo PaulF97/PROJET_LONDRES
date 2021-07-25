@@ -60,7 +60,7 @@ public class FXMLDeleteCarOfListController {
                     
                     // delete the data and update the table
                     CustomerDBQuery dataEnter = new CustomerDBQuery();                    
-                    dataEnter.run("DELETE FROM `vehicules` WHERE Vehicule_id = "+id+" ");
+                    dataEnter.run("DELETE FROM `vehicules` WHERE Vehicule_id = "+id+" "); // sql command to delete the table of current id
 
                     JOptionPane.showMessageDialog(null, "the car has been deleted","info employee", JOptionPane.INFORMATION_MESSAGE);
 

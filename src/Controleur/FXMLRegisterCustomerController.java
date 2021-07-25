@@ -44,27 +44,45 @@ public class FXMLRegisterCustomerController {
     protected static String user;
     protected static String password;
 
+    /**
+     * class constructor
+     */
     public FXMLRegisterCustomerController() {}
 
+    /**
+     * get the username
+     * @return
+     */
     public String getUser() {
         return user;
     }
 
+    /**
+     * set the username
+     * @param user
+     */
     public static void setUser(String user) {
         FXMLRegisterCustomerController.user = user;
     }
 
+    /**
+     * get the password
+     * @return
+     */
     public String getPassword() {
         return password;
     }
 
+    /**
+     * set the password
+     * @param password
+     */
     public static void setPassword(String password) {
         FXMLRegisterCustomerController.password = password;
     }
     
-    
-    
     ProcessDataBase obj = new ProcessDataBase();
+    
     @FXML
     void onClickedRegister(ActionEvent event) throws IOException {
 
@@ -81,15 +99,13 @@ public class FXMLRegisterCustomerController {
             exit();
         }
  
-        /*
-        * Personalized Exception handling to prevent customer login errors
-        */
+
         try{
             if(event.getSource() == m_buttonRegister ){
                  DBGetter Getdata = new DBGetter();
                  user = m_username.getText();
                  password = m_passwordField.getText();
-                 if(user.isEmpty() && password.isEmpty()){
+                 if(user.isEmpty() && password.isEmpty()){ // check for errors
                     throw new ExceptionPasswordANDusernameEmpty();
                 } else if(password.isEmpty()){
                     throw new ExceptionPasswordEmpty();

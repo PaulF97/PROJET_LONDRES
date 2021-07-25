@@ -33,6 +33,8 @@ public class FXMLAccountCheckCustomerController {
     @FXML
     private Button m_closeAccountCheck;
 
+    
+    
     @FXML
     void onClickedChoice(ActionEvent event) throws IOException {
         if(event.getSource() == m_buttonYes){ // if the customer has already a account
@@ -49,14 +51,14 @@ public class FXMLAccountCheckCustomerController {
             window.setScene(tableViewScene);
             window.centerOnScreen();
             window.show();
-        } else if(event.getSource() == m_backAccountCheck){
+        } else if(event.getSource() == m_backAccountCheck){ // go back to person selection
             Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLSelectionPersonType.fxml"));
             Scene tableViewScene = new Scene(tableViewParent);
             Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
             window.setScene(tableViewScene);
             window.centerOnScreen();
             window.show();
-        } else if(event.getSource() == m_closeAccountCheck){
+        } else if(event.getSource() == m_closeAccountCheck){ // close app
             JOptionPane.showMessageDialog(null, "The application is about to close","information", JOptionPane.INFORMATION_MESSAGE);
             exit();
         }

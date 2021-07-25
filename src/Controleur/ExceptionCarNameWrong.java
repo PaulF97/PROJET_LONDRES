@@ -8,8 +8,9 @@ package Controleur;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author fishe
+ * this personalized exception will be excecuted
+ * if the car name entered by the customer is wrong
+ * author Paul fisher
  */
 public class ExceptionCarNameWrong extends Exception {
 

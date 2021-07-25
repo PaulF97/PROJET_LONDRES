@@ -8,8 +8,9 @@ package Controleur;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author fishe
+ * this personalized exception will be excecuted
+ * if no car has been entered
+ * Paul fisher
  */
 public class ExceptionCarNotChoosen extends Exception {
 

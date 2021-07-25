@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="447.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Controleur.FXMLReservationsAppController">
+   <children>
+      <Label layoutX="172.0" layoutY="35.0" text="Total reservation display">
+         <font>
+            <Font name="System Bold Italic" size="22.0" />
+         </font>
+      </Label>
+      <TableView fx:id="m_tableReservation" layoutY="131.0" prefHeight="252.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <columns>
+          <TableColumn fx:id="m_resaTable" prefWidth="89.0" text="NumberResa" />
+            <TableColumn fx:id="m_carResa" prefWidth="61.0" text="vehicule" />
+            <TableColumn fx:id="m_startResa" prefWidth="75.0" text="start date" />
+            <TableColumn fx:id="m_endDate" prefWidth="75.0" text="last date" />
+            <TableColumn fx:id="m_nameClient" prefWidth="75.0" text="name client" />
+            <TableColumn fx:id="m_lastClient" prefWidth="75.0" text="last client" />
+            <TableColumn fx:id="m_purposeResa" prefWidth="75.0" text="purpose" />
+          <TableColumn fx:id="m_usernameUsed" prefWidth="75.0" text="username" />
+        </columns>
+      </TableView>
+      <Button fx:id="m_backResa" layoutX="48.0" layoutY="14.0" mnemonicParsing="false" onAction="#onClickedResa" text="Back" />
+   </children>
+</AnchorPane>

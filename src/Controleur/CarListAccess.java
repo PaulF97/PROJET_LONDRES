@@ -17,6 +17,10 @@ import java.util.logging.Logger;
  */
 public class CarListAccess {
     
+    /**
+     * connection with the database
+     * @return null
+     */
     public static Connection getConnection(){
         Connection conn;
         try {

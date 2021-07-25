@@ -65,39 +65,73 @@ public class FXMLReservationInformationController {
     protected static String username;
     protected static String purposeRecap;
 
-    // constructor
+    /**
+     * class constructor
+     */
     public FXMLReservationInformationController() {}
     
     // getters and setters
+
+    /**
+     * get the username
+     * @return
+     */
     public String getUsername() {
         return username;
     }
 
+    /**
+     * set the username
+     * @param username
+     */
     public void setUsername(String username) {
         FXMLReservationInformationController.username = username;
     }
     
-    
+    /**
+     * get the money gain off app
+     * @return
+     */
     public double getMoneyGenerated() {
         return moneyGenerated;
     }
 
+    /**
+     * set the money gain
+     * @param moneyGenerated
+     */
     public void setMoneyGenerated(double moneyGenerated) {
         FXMLReservationInformationController.moneyGenerated = moneyGenerated;
     }
 
+    /**
+     * get the purpose of reservation
+     * @return
+     */
     public String getPurposeRecap() {
         return purposeRecap;
     }
 
+    /**
+     * set the purpose of reservation
+     * @param purposeRecap
+     */
     public void setPurposeRecap(String purposeRecap) {
         FXMLReservationInformationController.purposeRecap = purposeRecap;
     }
     
+    /**
+     * get number of orders off app
+     * @return
+     */
     public int getNumberOfOrders() {
         return numberOfOrders;
     }
 
+    /**
+     * set the number of orders
+     * @param numberOfOrders
+     */
     public void setNumberOfOrders(int numberOfOrders) {
         FXMLReservationInformationController.numberOfOrders = numberOfOrders;
     }
@@ -108,13 +142,6 @@ public class FXMLReservationInformationController {
     DBGetter getCarName = new DBGetter();
     CustomerDBQuery dataUpdate = new CustomerDBQuery(); 
 
-    /*
-    * Source for email : 
-    * https://www.youtube.com/watch?v=A7HAB5whD6I&t=361s
-    */
-    
-    
-    
     @FXML
     void onActionRecap(ActionEvent event) throws InterruptedException, MessagingException, IOException {
         
@@ -149,18 +176,20 @@ public class FXMLReservationInformationController {
         }
         
         if(event.getSource() == m_bookingConfirm){
-
-            
+            int numberReservation = (int)(Math.random()*9000)+1000;
+            String reseavation = Integer.toString(numberReservation);
             JOptionPane.showMessageDialog(null, "You the reservation is being proceded","info", JOptionPane.INFORMATION_MESSAGE);
-            TimeUnit.SECONDS.sleep(2);
-            JOptionPane.showMessageDialog(null, "The reservation is validated. thank you for choosing us " +firstNamePurpose+ " " + lastNamePurpose+ "","info", JOptionPane.INFORMATION_MESSAGE);
+            TimeUnit.SECONDS.sleep(2); // small time laps for validation
+            JOptionPane.showMessageDialog(null, "The reservation is validated. thank you for choosing us. " +firstNamePurpose+ " " + lastNamePurpose+ "IMPORTANTE RESERVATION NUMBER : " +reseavation+ "","info", JOptionPane.INFORMATION_MESSAGE);
             LocalDate availableLast = last.plusDays(daysTakenByCustomer + 1); // sets the last day when the car will be available after rental period
             dataUpdate.run("UPDATE vehicules SET first_date ='"+last+"' WHERE vehicules.Vehicule_id = "+idCar); // updates the first date
             dataUpdate.run("UPDATE vehicules SET last_date ='"+availableLast+"' WHERE vehicules.Vehicule_id = "+idCar);  // updates the last date
-
+            dataUpdate.run("INSERT INTO `reservation` (`numberReservation`, `vehicule_name`, `starting_date`, `ending_date`, `firstName_client`, `lastName_client`, `purpose_client`, `username_used`) VALUES ('"+numberReservation+"' , '"+carName+"' , '"+first+"' , '"+last+"' , '"+firstNamePurpose+"', '"+lastNamePurpose+"' , '"+purposeRecap+"' , '"+username+"')");
+            
             numberOfOrders++; // get accumulation of orders
             moneyGenerated = moneyGenerated + rentalPrice; // get accumulation of money gain
-            
+  
+
             // goes back to main page
             Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLDocument.fxml"));
             Scene tableViewScene = new Scene(tableViewParent);

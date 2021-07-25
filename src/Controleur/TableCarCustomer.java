@@ -16,23 +16,44 @@ public class TableCarCustomer {
     protected String vehiculeName;
     protected double vehiculePrice;
 
+    /**
+     * initialize the class
+     * @param vehiculeName
+     * @param vehiculePrice
+     */
     public TableCarCustomer(String vehiculeName, double vehiculePrice) {
         this.vehiculeName = vehiculeName;
         this.vehiculePrice = vehiculePrice;
     }
     
+    /**
+     * get the vehicule name
+     * @return
+     */
     public String getVehiculeName() {
         return vehiculeName;
     }
 
+    /**
+     * set the vehicule name
+     * @param vehiculeName
+     */
     public void setVehiculeName(String vehiculeName) {
         this.vehiculeName = vehiculeName;
     }
 
+    /**
+     * get the vehicule price
+     * @return
+     */
     public double getVehiculePrice() {
         return vehiculePrice;
     }
 
+    /**
+     * set the vehicule price
+     * @param vehiculePrice
+     */
     public void setVehiculePrice(double vehiculePrice) {
         this.vehiculePrice = vehiculePrice;
     }

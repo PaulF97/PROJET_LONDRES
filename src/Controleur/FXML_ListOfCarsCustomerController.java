@@ -25,7 +25,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -40,16 +39,15 @@ import javax.swing.JOptionPane;
  */
 public class FXML_ListOfCarsCustomerController implements Initializable{
 
-    public ToggleGroup radioButtons = new ToggleGroup();
     
+    @FXML
+    private TableView<TableCarCustomer> tableCar;
+        
     @FXML
     private TableColumn<TableCarCustomer, Double> rentalPrice;
 
     @FXML
     private TableColumn<TableCarCustomer, String> vehicule_type;
-
-    @FXML
-    private TableView<TableCarCustomer> tableCar;
 
     @FXML
     private Button m_modifyDates;

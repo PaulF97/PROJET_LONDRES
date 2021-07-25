@@ -11,8 +11,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- *
- * @author fishe
+ * Launch the application
+ * @author Paul Fisher
  */
 public class ProjetFX extends Application {
     

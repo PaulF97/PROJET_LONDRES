@@ -8,7 +8,7 @@ package Controleur;
 import javax.swing.JOptionPane;
 
 /**
-This personalized exception will be excecuted if 
+*This personalized exception will be excecuted if 
 * the customer has not accepted the general conditions
 * of the application
 * author Paul Fisher
