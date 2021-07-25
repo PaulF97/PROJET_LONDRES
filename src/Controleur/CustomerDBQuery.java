@@ -25,7 +25,7 @@ public class CustomerDBQuery {
    public final String password = ""; //password is your password to connect to the database       
    private Connection conn;
 
-    public CustomerDBQuery() {}
+   public CustomerDBQuery() {}
  
     /**
      * Execute the query

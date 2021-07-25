@@ -12,7 +12,7 @@
 <AnchorPane id="AnchorPane" prefHeight="371.0" prefWidth="532.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controleur.FXMLAccountCheckCustomerController">
    <children>
     <AnchorPane layoutX="113.0" layoutY="-251.0" minHeight="0.0" minWidth="0.0" prefHeight="143.0" prefWidth="318.0" />
-      <Label layoutX="77.0" layoutY="66.0" prefHeight="50.0" prefWidth="199.0" text="Do you have a account ?" AnchorPane.leftAnchor="77.0" AnchorPane.rightAnchor="42.0">
+      <Label layoutX="77.0" layoutY="66.0" prefHeight="50.0" prefWidth="199.0" text="Do you have an account ?" AnchorPane.leftAnchor="77.0" AnchorPane.rightAnchor="42.0">
          <font>
             <Font name="System Bold Italic" size="30.0" />
          </font>
