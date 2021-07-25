@@ -17,6 +17,12 @@ import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
+/**
+* This class will manege the signup page 
+* for the new customer and will stock his personnal 
+* data in the data base
+* author : Paul Fisher
+*/
 public class FXMLSignInPlatformController {
 
     @FXML

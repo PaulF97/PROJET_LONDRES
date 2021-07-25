@@ -22,6 +22,11 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
+/**
+* This class will manege the page where the employee 
+* will add a car to the database
+* author : Paul Fisher
+*/
 public class FXMLAddCarToListController {
 
     @FXML

@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  * This class assures the connection of the database
  * and the run() method interprets SQL commands and reads 
  * in database
- * Savinien Godineau 
+ * author : Savinien Godineau 
  */
 public class ProcessDataBase {
 

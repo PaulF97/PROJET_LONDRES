@@ -14,9 +14,11 @@ import javax.swing.JOptionPane;
 
 
 /**
- *
- * @author fishe
- */
+* This class will manege the page where the customer
+* needs to choose if he will login or go to the sinup page
+* to create a account
+* author : Paul Fisher
+*/
 public class FXMLAccountCheckCustomerController {
 
     @FXML

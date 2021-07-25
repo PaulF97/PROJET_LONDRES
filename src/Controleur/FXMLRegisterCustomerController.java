@@ -19,9 +19,10 @@ import javax.swing.JOptionPane;
 
 
 /**
- *
- * @author fishe
- */
+* This class will manege the page where the customer 
+* will login with his codes stocked in the database
+* author : Paul Fisher
+*/
 public class FXMLRegisterCustomerController {
 
 

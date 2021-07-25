@@ -11,6 +11,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
+/**
+* This class will manege and display the possible actions
+* that the employee can do
+* author : Paul Fisher
+*/
 public class FXMLChoiceActionEmployeeController {
 
     @FXML
@@ -62,11 +67,15 @@ public class FXMLChoiceActionEmployeeController {
             window.centerOnScreen();
             window.show();
         } else if(event.getSource() == m_rentCarac){
-            
+            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLRentStatistics.fxml"));
+            Scene tableViewScene = new Scene(tableViewParent);
+            Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            window.setScene(tableViewScene);
+            window.centerOnScreen();
+            window.show();
         } 
         else if(event.getSource() == m_exitEmployee){
             exit();
         }
     }
-
 }

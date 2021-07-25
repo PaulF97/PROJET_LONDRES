@@ -55,7 +55,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="50.0" layoutY="494.0" text="Thank you for choosing our company, we hope you enjoyed the experience">
+      <Label layoutX="45.0" layoutY="500.0" text="Thank you for choosing our company, we hope you enjoyed the experience">
          <font>
             <Font name="System Bold Italic" size="24.0" />
          </font>
@@ -116,15 +116,14 @@
             <Font size="25.0" />
          </font>
       </Label>
-      <Label layoutX="56.0" layoutY="449.0" text="Please enter a email adress">
+      <Label layoutX="56.0" layoutY="449.0" text="Username used">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <TextField fx:id="m_emailField" layoutX="416.0" layoutY="454.0" onAction="#onActionRecap" promptText="enter mail adresse" />
-      <Label layoutX="54.0" layoutY="540.0" text="Note : a email will be sent with all the informations">
+      <Label fx:id="m_usernameUsed" layoutX="334.0" layoutY="449.0" prefHeight="36.0" prefWidth="224.0" textAlignment="CENTER" AnchorPane.leftAnchor="334.0">
          <font>
-            <Font size="14.0" />
+            <Font size="25.0" />
          </font>
       </Label>
    </children>

@@ -6,9 +6,9 @@
 package Controleur;
 
 /**
- * Display the vehicule name and the rental price
- * to the customer before choosing a car
- * Paul fisher
+ * This class will contain the information of the database
+ * wich will be displayed when the customer will choose his car
+ * Author : Paul fisher
  */
 public class TableCarCustomer {
     

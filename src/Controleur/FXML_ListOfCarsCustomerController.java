@@ -31,11 +31,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
-/*
-* Display the cars available to the customer
-* accourding to his rental dates
-* Bibliographie : https://www.youtube.com/watch?v=LoiQVoNil9Q&t=416s
-*/
+
+
+/**
+ * Display the cars available to the customer
+ * accourding to his rental dates
+ * author : Paul fisher
+ */
 public class FXML_ListOfCarsCustomerController implements Initializable{
 
     public ToggleGroup radioButtons = new ToggleGroup();
@@ -79,6 +81,7 @@ public class FXML_ListOfCarsCustomerController implements Initializable{
     protected static String lastName;
     protected static double price;
     protected static int days;
+    protected static String userLogin;
     
     // classes instances
     FXMLDateEntranceController obj = new FXMLDateEntranceController();
@@ -90,11 +93,18 @@ public class FXML_ListOfCarsCustomerController implements Initializable{
     LocalDate first = obj.getFirst();
     LocalDate last = obj.getLast();
 
-    // gets the user value during registration
-    String userLogin = getUser.getUser();
+    
 
     public FXML_ListOfCarsCustomerController() {}
 
+    public String getUserLogin() {
+        return userLogin;
+    }
+
+    public void setUserLogin(String userLogin) {
+        FXML_ListOfCarsCustomerController.userLogin = userLogin;
+    }
+    
     public int getDays() {
         return days;
     }
@@ -102,9 +112,6 @@ public class FXML_ListOfCarsCustomerController implements Initializable{
     public void setDays(int days) {
         FXML_ListOfCarsCustomerController.days = days;
     }
-    
-    
-    
     
     public double getPrice() {
         return price;
@@ -114,7 +121,6 @@ public class FXML_ListOfCarsCustomerController implements Initializable{
         FXML_ListOfCarsCustomerController.price = price;
     }
 
-    
     public int getIdCar() {
         return idCar;
     }
@@ -138,7 +144,6 @@ public class FXML_ListOfCarsCustomerController implements Initializable{
     public void setLastName(String lastName) {
         FXML_ListOfCarsCustomerController.lastName = lastName;
     }
-
     
     public String getCarName() {
         return carName;
@@ -175,9 +180,8 @@ public class FXML_ListOfCarsCustomerController implements Initializable{
         
         vehicule_type.setCellValueFactory(new PropertyValueFactory<>("vehiculeName"));
         rentalPrice.setCellValueFactory(new PropertyValueFactory<>("vehiculePrice"));
-     
+        
         tableCar.setItems(listOfCarCustomer);
-    
     }
     
     @FXML
@@ -202,6 +206,8 @@ public class FXML_ListOfCarsCustomerController implements Initializable{
                 if(m_vehiculeChoice.getText().isEmpty()){
                     throw new ExceptionCarNotChoosen();
                 }else {
+                    
+                    userLogin = getUser.getUser(); // gets the user value during registration
                     carName = m_vehiculeChoice.getText();
                     idCar = getCustomerPurpose.GetPrimaryID("vehicules", carName, "vehicule_id"); // gets the vehicule ID of chosen car
                     purpose = getCustomerPurpose.GetStringUser("person", userLogin, "purpose"); // gets the purpose of the customer

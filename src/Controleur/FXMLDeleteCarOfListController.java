@@ -15,6 +15,11 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
+/**
+* This class will manege the page where the employee 
+* will delay some cars from the database
+* author : Paul Fisher
+*/
 public class FXMLDeleteCarOfListController {
 
     @FXML

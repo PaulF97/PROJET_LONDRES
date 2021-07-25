@@ -16,10 +16,13 @@ import javafx.scene.control.DatePicker;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
-
+/**
+* This class will manege the page where the customer
+* will enter his rental dates disponibility
+* author : Paul Fisher
+*/
 public class FXMLDateEntranceController {
 
- 
     @FXML
     private DatePicker m_startDate;
 

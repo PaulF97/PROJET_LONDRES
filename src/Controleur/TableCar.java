@@ -6,9 +6,9 @@
 package Controleur;
 
 /**
- * Display all the cars information
- * to the employee
- * Paul fisher
+ * This class will contain the information of the database
+ * wich will be displayed when the employee will see the car list
+ * Author : Paul fisher
  */
 public class TableCar {
     

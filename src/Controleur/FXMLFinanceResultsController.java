@@ -20,10 +20,11 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 /**
- * FXML Controller class
- *
- * @author fishe
- */
+* This class will manege and display the financal data
+* of the application
+* Only accessible with Employee's codes
+* author : Paul Fisher
+*/
 public class FXMLFinanceResultsController implements Initializable {
 
     FXMLReservationInformationController financeData = new FXMLReservationInformationController();

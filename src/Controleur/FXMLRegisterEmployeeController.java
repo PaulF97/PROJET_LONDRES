@@ -14,6 +14,12 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
+
+/**
+* This class will manege the page where the employee 
+* will login with his admin codes
+* author : Paul Fisher
+*/
 public class FXMLRegisterEmployeeController {
 
     @FXML
