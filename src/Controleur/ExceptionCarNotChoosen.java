@@ -8,13 +8,14 @@ package Controleur;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author fishe
+ * this personalized exception will be excecuted
+ * if no car has been entered
+ * Paul fisher
  */
 public class ExceptionCarNotChoosen extends Exception {
 
     public ExceptionCarNotChoosen() {
-        JOptionPane.showMessageDialog(null, "You need to enter a car number identification before passing to paiment","error", JOptionPane.ERROR_MESSAGE);    
+        JOptionPane.showMessageDialog(null, "You need to enter an available car","error", JOptionPane.ERROR_MESSAGE);    
     }
     
 }

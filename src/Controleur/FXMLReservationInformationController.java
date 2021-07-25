@@ -5,22 +5,28 @@
  */
 package Controleur;
 
-import java.time.LocalDate;
+import java.io.IOException;
 
+import java.time.LocalDate;
 import java.util.concurrent.TimeUnit;
-import static javafx.application.Platform.exit;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javax.swing.JOptionPane;
-import java.util.*;
+
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import javax.mail.*;
-import javax.mail.internet.*;
-import javax.activation.*;
 
-
+/**
+* This class will manege and display
+* all the booking information of the customer
+* author : Paul Fisher
+*/
 public class FXMLReservationInformationController {
 
     @FXML
@@ -49,115 +55,113 @@ public class FXMLReservationInformationController {
 
     @FXML
     private Label m_purposeLabel;
-   
-    @FXML
-    private TextField m_emailField;
     
-    // static variables. static to call use them in other class
+    @FXML
+    private Label m_usernameUsed;
+    
+    // static variables
+    protected static int numberOfOrders = 0;
+    protected static double moneyGenerated = 0;
+    protected static String username;
     protected static String purposeRecap;
-    protected static String firstNamePurpose;
-    protected static String lastNamePurpose;
-    protected static LocalDate first;
-    protected static LocalDate last;
-    protected static String priceToString;
-    protected static String carName;
-    protected static String mail;
 
+    /**
+     * class constructor
+     */
     public FXMLReservationInformationController() {}
     
     // getters and setters
 
+    /**
+     * get the username
+     * @return
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * set the username
+     * @param username
+     */
+    public void setUsername(String username) {
+        FXMLReservationInformationController.username = username;
+    }
+    
+    /**
+     * get the money gain off app
+     * @return
+     */
+    public double getMoneyGenerated() {
+        return moneyGenerated;
+    }
+
+    /**
+     * set the money gain
+     * @param moneyGenerated
+     */
+    public void setMoneyGenerated(double moneyGenerated) {
+        FXMLReservationInformationController.moneyGenerated = moneyGenerated;
+    }
+
+    /**
+     * get the purpose of reservation
+     * @return
+     */
     public String getPurposeRecap() {
         return purposeRecap;
     }
 
+    /**
+     * set the purpose of reservation
+     * @param purposeRecap
+     */
     public void setPurposeRecap(String purposeRecap) {
         FXMLReservationInformationController.purposeRecap = purposeRecap;
     }
-
-    public String getFirstNamePurpose() {
-        return firstNamePurpose;
-    }
-
-    public void setFirstNamePurpose(String firstNamePurpose) {
-        FXMLReservationInformationController.firstNamePurpose = firstNamePurpose;
-    }
-
-    public String getLastNamePurpose() {
-        return lastNamePurpose;
-    }
-
-    public void setLastNamePurpose(String lastNamePurpose) {
-        FXMLReservationInformationController.lastNamePurpose = lastNamePurpose;
-    }
-
-    public LocalDate getFirst() {
-        return first;
-    }
-
-    public void setFirst(LocalDate first) {
-        FXMLReservationInformationController.first = first;
-    }
-
-    public LocalDate getLast() {
-        return last;
-    }
-
-    public void setLast(LocalDate last) {
-        FXMLReservationInformationController.last = last;
-    }
-
-    public String getPriceToString() {
-        return priceToString;
-    }
-
-    public void setPriceToString(String priceToString) {
-        FXMLReservationInformationController.priceToString = priceToString;
-    }
-
-    public String getCarName() {
-        return carName;
-    }
-
-    public void setCarName(String carName) {
-        FXMLReservationInformationController.carName = carName;
-    }
-
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        FXMLReservationInformationController.mail = mail;
-    }
     
+    /**
+     * get number of orders off app
+     * @return
+     */
+    public int getNumberOfOrders() {
+        return numberOfOrders;
+    }
+
+    /**
+     * set the number of orders
+     * @param numberOfOrders
+     */
+    public void setNumberOfOrders(int numberOfOrders) {
+        FXMLReservationInformationController.numberOfOrders = numberOfOrders;
+    }
     
     // class instances
     FXMLDateEntranceController getRentalDates = new FXMLDateEntranceController();
     FXML_ListOfCarsCustomerController getCustomerInfo = new FXML_ListOfCarsCustomerController();
     DBGetter getCarName = new DBGetter();
+    CustomerDBQuery dataUpdate = new CustomerDBQuery(); 
 
-    /*
-    * Source for email : 
-    * https://www.youtube.com/watch?v=A7HAB5whD6I&t=361s
-    */
-    
     @FXML
-    void onActionRecap(ActionEvent event) throws InterruptedException {
-                
-        // gets the rental dates
-        first = getRentalDates.getFirst();
-        last = getRentalDates.getLast();
+    void onActionRecap(ActionEvent event) throws InterruptedException, MessagingException, IOException {
         
-        // gets the customer & car info
-        purposeRecap = getCustomerInfo.getPurpose();
-        firstNamePurpose = getCustomerInfo.getName();
-        lastNamePurpose = getCustomerInfo.getLastName();
+        // gets the rental dates
+        LocalDate first = getRentalDates.getFirst();
+        LocalDate last = getRentalDates.getLast();
+        
+        // car information
         int idCar = getCustomerInfo.getIdCar();
         String idToString = Integer.toString(idCar);
         double rentalPrice = getCustomerInfo.getPrice();
-        priceToString = Integer.toString((int) rentalPrice);
-        carName = getCarName.GetString("vehicules", idCar, "vehicule_name");
+        String carName = getCarName.GetString("vehicules", idCar, "vehicule_name");
+
+        // gets the customer & car info
+        purposeRecap = getCustomerInfo.getPurpose();
+        String firstNamePurpose = getCustomerInfo.getName();
+        String lastNamePurpose = getCustomerInfo.getLastName();
+        String priceToString = Integer.toString((int) rentalPrice);
+        int daysTakenByCustomer = getCustomerInfo.getDays();
+        username = getCustomerInfo.getUserLogin();
         
         if(event.getSource() == m_test){
             m_firstLabel.setText(firstNamePurpose);
@@ -167,26 +171,32 @@ public class FXMLReservationInformationController {
             m_carNameLabel.setText(carName);
             m_purposeLabel.setText(purposeRecap);
             m_totalPrice.setText(priceToString);
-      
+            m_usernameUsed.setText(username);
+            
         }
         
-        try{
-            if(event.getSource() == m_bookingConfirm){
-                mail = m_emailField.getText();
-                if(mail.isEmpty()){ // if email empty
-                    throw new ExceptionMailConfirmationEmpty();
-                } else{
-                    JOptionPane.showMessageDialog(null, "You the reservation is being proceded","info", JOptionPane.INFORMATION_MESSAGE);
-                    TimeUnit.SECONDS.sleep(2);
-                    JOptionPane.showMessageDialog(null, "The reservation is validated. thank you for choosing us " +firstNamePurpose+ " " + lastNamePurpose+ "","info", JOptionPane.INFORMATION_MESSAGE);
-                    MailSendInfo mailSend = new MailSendInfo();
-                }
-                exit();
-           }  
+        if(event.getSource() == m_bookingConfirm){
+            int numberReservation = (int)(Math.random()*9000)+1000;
+            String reseavation = Integer.toString(numberReservation);
+            JOptionPane.showMessageDialog(null, "You the reservation is being proceded","info", JOptionPane.INFORMATION_MESSAGE);
+            TimeUnit.SECONDS.sleep(2); // small time laps for validation
+            JOptionPane.showMessageDialog(null, "The reservation is validated. thank you for choosing us. " +firstNamePurpose+ " " + lastNamePurpose+ "IMPORTANTE RESERVATION NUMBER : " +reseavation+ "","info", JOptionPane.INFORMATION_MESSAGE);
+            LocalDate availableLast = last.plusDays(daysTakenByCustomer + 1); // sets the last day when the car will be available after rental period
+            dataUpdate.run("UPDATE vehicules SET first_date ='"+last+"' WHERE vehicules.Vehicule_id = "+idCar); // updates the first date
+            dataUpdate.run("UPDATE vehicules SET last_date ='"+availableLast+"' WHERE vehicules.Vehicule_id = "+idCar);  // updates the last date
+            dataUpdate.run("INSERT INTO `reservation` (`numberReservation`, `vehicule_name`, `starting_date`, `ending_date`, `firstName_client`, `lastName_client`, `purpose_client`, `username_used`) VALUES ('"+numberReservation+"' , '"+carName+"' , '"+first+"' , '"+last+"' , '"+firstNamePurpose+"', '"+lastNamePurpose+"' , '"+purposeRecap+"' , '"+username+"')");
             
-        } catch (ExceptionMailConfirmationEmpty ex) {
-            ex.getMessage();
+            numberOfOrders++; // get accumulation of orders
+            moneyGenerated = moneyGenerated + rentalPrice; // get accumulation of money gain
+  
+
+            // goes back to main page
+            Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLDocument.fxml"));
+            Scene tableViewScene = new Scene(tableViewParent);
+            Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            window.setScene(tableViewScene);
+            window.centerOnScreen();
+            window.show();
         }
     }
-    
 }

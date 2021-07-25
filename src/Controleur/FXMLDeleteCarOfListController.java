@@ -15,6 +15,11 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
+/**
+* This class will manege the page where the employee 
+* will delay some cars from the database
+* author : Paul Fisher
+*/
 public class FXMLDeleteCarOfListController {
 
     @FXML
@@ -55,7 +60,7 @@ public class FXMLDeleteCarOfListController {
                     
                     // delete the data and update the table
                     CustomerDBQuery dataEnter = new CustomerDBQuery();                    
-                    dataEnter.run("DELETE FROM `vehicules` WHERE Vehicule_id = "+id+" ");
+                    dataEnter.run("DELETE FROM `vehicules` WHERE Vehicule_id = "+id+" "); // sql command to delete the table of current id
 
                     JOptionPane.showMessageDialog(null, "the car has been deleted","info employee", JOptionPane.INFORMATION_MESSAGE);
 

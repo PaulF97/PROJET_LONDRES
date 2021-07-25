@@ -13,9 +13,11 @@ import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author fishe
- */
+* This class will manege the page where the
+* person will indicate if he is a customer or an
+* employee
+* author : Paul Fisher
+*/
 public class FXMLSelectionPersonTypeController {
 
     @FXML

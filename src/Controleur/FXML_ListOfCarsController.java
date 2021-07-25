@@ -24,9 +24,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
-/*
+/**
 * Display the list of cars to the employee
-* Bibliographie : https://www.youtube.com/watch?v=LoiQVoNil9Q&t=416s
+* author : Paul Fisher
 */
 public class FXML_ListOfCarsController implements Initializable{
 
@@ -76,6 +76,8 @@ public class FXML_ListOfCarsController implements Initializable{
         }
     }
     
+    // source to display : https://www.youtube.com/watch?v=LoiQVoNil9Q&t=416s
+   
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

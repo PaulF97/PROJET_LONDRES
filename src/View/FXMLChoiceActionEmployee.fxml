@@ -8,24 +8,24 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controleur.FXMLChoiceActionEmployeeController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="1002.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controleur.FXMLChoiceActionEmployeeController">
    <children>
-      <Label layoutX="132.0" layoutY="70.0" text="What do you want to do ?">
+      <Label layoutX="366.0" layoutY="52.0" text="What do you want to do ?">
          <font>
             <Font name="System Bold Italic" size="28.0" />
          </font>
       </Label>
-      <Button fx:id="m_displayEmployee" layoutX="34.0" layoutY="206.0" mnemonicParsing="false" onAction="#ActionChoiceCustomer" prefHeight="64.0" prefWidth="174.0" text="Display list of cars">
+      <Button fx:id="m_displayEmployee" layoutX="49.0" layoutY="145.0" mnemonicParsing="false" onAction="#ActionChoiceCustomer" prefHeight="64.0" prefWidth="174.0" text="Display list of cars">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button fx:id="m_addCarEmployee" layoutX="227.0" layoutY="206.0" mnemonicParsing="false" onAction="#ActionChoiceCustomer" prefHeight="64.0" prefWidth="174.0" text="add product">
+      <Button fx:id="m_addCarEmployee" layoutX="242.0" layoutY="145.0" mnemonicParsing="false" onAction="#ActionChoiceCustomer" prefHeight="64.0" prefWidth="174.0" text="add product">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button fx:id="m_deleteEmployee" layoutX="412.0" layoutY="206.0" mnemonicParsing="false" onAction="#ActionChoiceCustomer" prefHeight="64.0" prefWidth="174.0" text="delete product">
+      <Button fx:id="m_deleteEmployee" layoutX="427.0" layoutY="145.0" mnemonicParsing="false" onAction="#ActionChoiceCustomer" prefHeight="64.0" prefWidth="174.0" text="delete product">
          <font>
             <Font size="16.0" />
          </font>
@@ -50,7 +50,22 @@
             <Image url="@question.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="m_exitEmployee" layoutX="251.0" layoutY="356.0" mnemonicParsing="false" onAction="#ActionChoiceCustomer" prefHeight="28.0" prefWidth="98.0" text="Exit" AnchorPane.bottomAnchor="0.0">
+      <Button fx:id="m_exitEmployee" layoutX="452.0" layoutY="356.0" mnemonicParsing="false" onAction="#ActionChoiceCustomer" prefHeight="28.0" prefWidth="98.0" text="Exit" AnchorPane.bottomAnchor="0.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="m_financeCompany" layoutX="619.0" layoutY="145.0" mnemonicParsing="false" onAction="#ActionChoiceCustomer" prefHeight="64.0" prefWidth="174.0" text="finance">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="m_rentCarac" layoutX="814.0" layoutY="145.0" mnemonicParsing="false" onAction="#ActionChoiceCustomer" prefHeight="64.0" prefWidth="174.0" text="Rent caracteristics">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="m_reservations" layoutX="427.0" layoutY="243.0" mnemonicParsing="false" onAction="#ActionChoiceCustomer" prefHeight="64.0" prefWidth="174.0" text="Consult reservations">
          <font>
             <Font size="16.0" />
          </font>

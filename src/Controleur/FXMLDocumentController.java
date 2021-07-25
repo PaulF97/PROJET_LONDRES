@@ -13,9 +13,9 @@ import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author fishe
- */
+* This class will display the welcome page of the application
+* author : Paul Fisher
+*/
 public class FXMLDocumentController {
 
     @FXML

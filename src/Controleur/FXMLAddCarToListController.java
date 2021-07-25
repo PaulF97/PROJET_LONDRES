@@ -22,6 +22,11 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
+/**
+* This class will manege the page where the employee 
+* will add a car to the database
+* author : Paul Fisher
+*/
 public class FXMLAddCarToListController {
 
     @FXML
@@ -55,70 +60,71 @@ public class FXMLAddCarToListController {
     void ActionAddCar(ActionEvent event) throws IOException {
         
         // optimization
-        if(event.getSource() == m_backAddCar){
+        if(event.getSource() == m_backAddCar){ // go back
             Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLChoiceActionEmployee.fxml"));
             Scene tableViewScene = new Scene(tableViewParent);
             Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
             window.setScene(tableViewScene);
             window.centerOnScreen();
             window.show();
-        } else if(event.getSource() == m_exitAddCar){
+        } else if(event.getSource() == m_exitAddCar){ // exit the app
             exit();
         }
     
         try{
             if(event.getSource() == m_addCar){
-            
-            LocalDate first = m_firstDate.getValue(); // gets the first date
-            LocalDate last = m_lastDate.getValue(); // gets the last day
-            LocalDate current = LocalDate.now();
-            // exception handling
-            if(m_vehiculeID.getText().isEmpty()){
-                throw new ExceptionVehiculeIDEmpty();
-            } else if(m_vehiculeName.getText().isEmpty()){
-                throw new ExceptionVehiculeNameEmpty();
-            } else if(m_discount.getText().isEmpty()){
-                throw new ExceptionVehiculeDiscountEmpty();
-            } else if(m_rentalPrice.getText().isEmpty()){
-                throw new ExceptionVehiculePriceEmpty();
-            } else if(first == null && last == null){
-                throw new ExceptionDatesEmpty();
-            } else if(first == null){
-                throw new ExceptionDateStartEmpty();
-            } else if(last == null){
-                throw new ExceptionDateEndEmpty();                
-            } else if(last.isBefore(first)){
-                throw new ExceptionDateLastBeforeFirst();
-            } else if(first.isBefore(current)){
-                throw new ExceptionDateStartBeforeCurrent();
-            }
-            else{ // if no error has exception has been thrown..
-                String id = m_vehiculeID.getText();
-                String name = m_vehiculeName.getText();
-                String discount = m_discount.getText();
-                String rental = m_rentalPrice.getText();
-                
-                // convertion to int before adding on vehicule table
-                int idToInt = Integer.parseInt(id);
-                int discountToInt = Integer.parseInt(discount);
-                int rentalToInt = Integer.parseInt(rental);
-                
-        
-                // adds the new information in the table
-                CustomerDBQuery dataEnter = new CustomerDBQuery();                    
-                dataEnter.run("INSERT INTO `vehicules` (`Vehicule_id`, `vehicule_name`, `first_date`, `last_date`, `discount`, `rental_price`) VALUES ('"+idToInt+"', '"+name+"' , '"+first+"' , '"+last+"' , '"+discountToInt+"', '"+rentalToInt+"')");
+    
+                LocalDate first = m_firstDate.getValue(); // gets the first date
+                LocalDate last = m_lastDate.getValue(); // gets the last day
+                LocalDate current = LocalDate.now();
+                // exception handling
+                if(m_vehiculeID.getText().isEmpty()){
+                    throw new ExceptionVehiculeIDEmpty();
+                } else if(m_vehiculeName.getText().isEmpty()){
+                    throw new ExceptionVehiculeNameEmpty();
+                } else if(m_discount.getText().isEmpty()){
+                    throw new ExceptionVehiculeDiscountEmpty();
+                } else if(m_rentalPrice.getText().isEmpty()){
+                    throw new ExceptionVehiculePriceEmpty();
+                } else if(first == null && last == null){
+                    throw new ExceptionDatesEmpty();
+                } else if(first == null){
+                    throw new ExceptionDateStartEmpty();
+                } else if(last == null){
+                    throw new ExceptionDateEndEmpty();                
+                } else if(last.isBefore(first)){
+                    throw new ExceptionDateLastBeforeFirst();
+                } else if(first.isBefore(current)){
+                    throw new ExceptionDateStartBeforeCurrent();
+                }
+                else{ // if no error has exception has been thrown..
+                    String id = m_vehiculeID.getText();
+                    String name = m_vehiculeName.getText();
+                    String discount = m_discount.getText();
+                    String rental = m_rentalPrice.getText();
 
-                JOptionPane.showMessageDialog(null, "the car has been added","info employee", JOptionPane.INFORMATION_MESSAGE);
-                
-                Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLChoiceActionEmployee.fxml"));
-                Scene tableViewScene = new Scene(tableViewParent);
-                Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
-                window.setScene(tableViewScene);
-                window.centerOnScreen();
-            }
+                    // convertion to int before adding on vehicule table
+                    int idToInt = Integer.parseInt(id);
+                    int discountToInt = Integer.parseInt(discount);
+                    int rentalToInt = Integer.parseInt(rental);
+
+
+                    // adds the new information in the table
+                    CustomerDBQuery dataEnter = new CustomerDBQuery();                    
+                    dataEnter.run("INSERT INTO `vehicules` (`Vehicule_id`, `vehicule_name`, `first_date`, `last_date`, `discount`, `rental_price`) VALUES ('"+idToInt+"', '"+name+"' , '"+first+"' , '"+last+"' , '"+discountToInt+"', '"+rentalToInt+"')");
+
+                    JOptionPane.showMessageDialog(null, "the car has been added","info employee", JOptionPane.INFORMATION_MESSAGE);
+
+                    
+                    Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLChoiceActionEmployee.fxml"));
+                    Scene tableViewScene = new Scene(tableViewParent);
+                    Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                    window.setScene(tableViewScene);
+                    window.centerOnScreen();
+                }
             
-        } // exception code excecuted..
-        } catch (ExceptionDatesEmpty ex) {
+            } 
+        } catch (ExceptionDatesEmpty ex) { // exception code excecuted..
             ex.getMessage();
         } catch (ExceptionDateStartEmpty ex) {
             ex.getMessage();

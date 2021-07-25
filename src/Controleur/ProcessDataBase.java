@@ -14,12 +14,17 @@ import javax.swing.JOptionPane;
  * This class assures the connection of the database
  * and the run() method interprets SQL commands and reads 
  * in database
- * Savinien Godineau 
+ * author : Savinien Godineau 
  */
 public class ProcessDataBase {
 
-    /*This method allows you to calculate the total cost of renting a vehicle over a period delimited by 2 dates in LOCALDATE format. 
-    *It is also necessary to specify which vehicle you wish to rent (the vehicle is designated by its ID) and to specify whether or not the client has a discount.
+    /**This method allows you to calculate the total cost of renting a vehicle over a period delimited by 2 dates in LOCALDATE format
+     *It is also necessary to specify which vehicle you wish to rent (the vehicle is designated by its ID) and to specify whether or not the client has a discount
+     * @param vehiculeID
+     * @param type
+     * @param first_date
+     * @param last_date
+     * @return total price
     */
     public double price_calculation(int vehiculeID, String type, LocalDate first_date, LocalDate last_date){
         DBGetter Getdata = new DBGetter();
@@ -40,9 +45,14 @@ public class ProcessDataBase {
         return resultat - ((discount /100)*resultat);
     }
     
-    /*
-    *This method calculates the duration between 2 dates in LOCALDATE format
-    */
+    
+    /**
+     *This method calculates the duration between 2 dates in LOCALDATE format
+     * @param first_date
+     * @param last_date
+     * @return day between two dates
+     */
+
     public int period_calculator(LocalDate first_date, LocalDate last_date){        
         Period period = Period.between(first_date, last_date);
         int years = period.getYears();
@@ -54,10 +64,15 @@ public class ProcessDataBase {
         return total_day_nb;
     }
     
-    /*This method allows to know if the login information entered by an user are correct. This method takes 2 parameters : 
-    *the username entered by the client.
-    *the password entered by the client. 
-    *If the input matches the data in the database, the method returns "true" otherwise it returns "false".
+    /**
+    *This method allows to know if the login information entered by an user are correct This method takes 2 parameters : 
+    *the username entered by the client
+    *the password entered by the client
+    *If the input matches the data in the database, the method returns "true" otherwise it returns "false"
+    * @param username
+    * @param password
+    * @return
+    * @throws IOException
     */
     public boolean Check_Login(String username, String password) throws IOException{
         DBGetter Getdata = new DBGetter();

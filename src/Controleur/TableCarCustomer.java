@@ -6,42 +6,54 @@
 package Controleur;
 
 /**
- * Display the vehicule name and the rental price
- * to the customer before choosing a car
- * Paul fisher
+ * This class will contain the information of the database
+ * wich will be displayed when the customer will choose his car
+ * Author : Paul fisher
  */
 public class TableCarCustomer {
     
-    protected double id;
+
     protected String vehiculeName;
     protected double vehiculePrice;
 
-    public TableCarCustomer(double id, String vehiculeName, double vehiculePrice) {
-        this.id = id;
+    /**
+     * initialize the class
+     * @param vehiculeName
+     * @param vehiculePrice
+     */
+    public TableCarCustomer(String vehiculeName, double vehiculePrice) {
         this.vehiculeName = vehiculeName;
         this.vehiculePrice = vehiculePrice;
     }
-
-    public double getId() {
-        return id;
-    }
-
-    public void setId(double id) {
-        this.id = id;
-    }
-
+    
+    /**
+     * get the vehicule name
+     * @return
+     */
     public String getVehiculeName() {
         return vehiculeName;
     }
 
+    /**
+     * set the vehicule name
+     * @param vehiculeName
+     */
     public void setVehiculeName(String vehiculeName) {
         this.vehiculeName = vehiculeName;
     }
 
+    /**
+     * get the vehicule price
+     * @return
+     */
     public double getVehiculePrice() {
         return vehiculePrice;
     }
 
+    /**
+     * set the vehicule price
+     * @param vehiculePrice
+     */
     public void setVehiculePrice(double vehiculePrice) {
         this.vehiculePrice = vehiculePrice;
     }

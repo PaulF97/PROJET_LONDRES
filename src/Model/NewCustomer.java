@@ -17,6 +17,5 @@ public class NewCustomer extends Customer{
     }
     
     public void register(){
-        
     }
 }

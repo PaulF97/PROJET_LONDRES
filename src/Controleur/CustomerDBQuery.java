@@ -19,19 +19,18 @@ import java.sql.Statement;
  */
 public class CustomerDBQuery {
     
-    // Database URL Constant
+   // Database URL Constant
    public final String url = "jdbc:mysql://localhost:3306/project"; //DB_URL is the database url to connect to. projet is the name of our project
    public final String user = "root"; //user is your username to connect to the database
    public final String password = ""; //password is your password to connect to the database       
    private Connection conn;
 
-    public CustomerDBQuery() {
-       
-    }
-    
-    /* 
-    * Execute the query.
-    */   
+   public CustomerDBQuery() {}
+ 
+    /**
+     * Execute the query
+     * @param query
+     */
    public void run (String query){
       getDatabaseConnection(); // assure connection to the database      
       try
@@ -47,10 +46,11 @@ public class CustomerDBQuery {
       }
    }
 
-   /*
-   * Connection to the database
-   */
-    private void getDatabaseConnection() //Create the connection to the database.
+
+    /**
+     * Connection to the database
+     */
+    public void getDatabaseConnection() //Create the connection to the database.
     {
         try
         {         

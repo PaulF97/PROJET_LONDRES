@@ -21,35 +21,33 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 
-/*
-* Display the cars available to the customer
-* accourding to his rental dates
-* Bibliographie : https://www.youtube.com/watch?v=LoiQVoNil9Q&t=416s
-*/
+
+
+/**
+ * Display the cars available to the customer
+ * accourding to his rental dates
+ * author : Paul fisher
+ */
 public class FXML_ListOfCarsCustomerController implements Initializable{
 
-    public ToggleGroup radioButtons = new ToggleGroup();
     
+    @FXML
+    private TableView<TableCarCustomer> tableCar;
+        
     @FXML
     private TableColumn<TableCarCustomer, Double> rentalPrice;
 
     @FXML
     private TableColumn<TableCarCustomer, String> vehicule_type;
-
-    @FXML
-    private TableView<TableCarCustomer> tableCar;
-
-    @FXML
-    private TableColumn<TableCarCustomer, Double> id;
 
     @FXML
     private Button m_modifyDates;
@@ -63,6 +61,12 @@ public class FXML_ListOfCarsCustomerController implements Initializable{
     @FXML
     private TextField m_vehiculeChoice;
     
+    @FXML
+    private Label m_lastDate;
+    
+    @FXML
+    private Label m_firstDate;
+    
     ArrayList<String> listOfCarsCustomers = new ArrayList<>(10);
 
     ObservableList<TableCarCustomer> listOfCarCustomer = FXCollections.observableArrayList();
@@ -74,6 +78,8 @@ public class FXML_ListOfCarsCustomerController implements Initializable{
     protected static String name;
     protected static String lastName;
     protected static double price;
+    protected static int days;
+    protected static String userLogin;
     
     // classes instances
     FXMLDateEntranceController obj = new FXMLDateEntranceController();
@@ -85,11 +91,26 @@ public class FXML_ListOfCarsCustomerController implements Initializable{
     LocalDate first = obj.getFirst();
     LocalDate last = obj.getLast();
 
-    // gets the user value during registration
-    String userLogin = getUser.getUser();
     
+
     public FXML_ListOfCarsCustomerController() {}
 
+    public String getUserLogin() {
+        return userLogin;
+    }
+
+    public void setUserLogin(String userLogin) {
+        FXML_ListOfCarsCustomerController.userLogin = userLogin;
+    }
+    
+    public int getDays() {
+        return days;
+    }
+
+    public void setDays(int days) {
+        FXML_ListOfCarsCustomerController.days = days;
+    }
+    
     public double getPrice() {
         return price;
     }
@@ -98,7 +119,6 @@ public class FXML_ListOfCarsCustomerController implements Initializable{
         FXML_ListOfCarsCustomerController.price = price;
     }
 
-    
     public int getIdCar() {
         return idCar;
     }
@@ -122,7 +142,6 @@ public class FXML_ListOfCarsCustomerController implements Initializable{
     public void setLastName(String lastName) {
         FXML_ListOfCarsCustomerController.lastName = lastName;
     }
-
     
     public String getCarName() {
         return carName;
@@ -140,32 +159,30 @@ public class FXML_ListOfCarsCustomerController implements Initializable{
         FXML_ListOfCarsCustomerController.purpose = purpose;
     }
     
-    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
+        m_firstDate.setText(first.toString());
+        m_lastDate.setText(last.toString());
         try {
             Connection con = CarListAccess.getConnection();
 
-            ResultSet rs = con.createStatement().executeQuery("SELECT vehicule_id, vehicule_name, rental_price FROM vehicules where first_date >= '"+first+"' AND last_date <= '"+last+"'");
+            ResultSet rs = con.createStatement().executeQuery("SELECT vehicule_name, rental_price FROM vehicules where first_date >= '"+first+"' AND last_date <= '"+last+"'");
           
             while(rs.next()){
-                listOfCarCustomer.add(new TableCarCustomer(rs.getDouble("vehicule_id"),rs.getString("vehicule_name"), rs.getDouble("rental_price")));
+                listOfCarCustomer.add(new TableCarCustomer(rs.getString("vehicule_name"), rs.getDouble("rental_price")));
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(FXML_ListOfCarsController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        id.setCellValueFactory(new PropertyValueFactory<>("id"));
         vehicule_type.setCellValueFactory(new PropertyValueFactory<>("vehiculeName"));
         rentalPrice.setCellValueFactory(new PropertyValueFactory<>("vehiculePrice"));
-     
+        
         tableCar.setItems(listOfCarCustomer);
-    
     }
     
-       @FXML
+    @FXML
     void onActionListCustomer(ActionEvent event) throws IOException {
         // additional options
         if(event.getSource() == m_modifyDates){
@@ -187,14 +204,18 @@ public class FXML_ListOfCarsCustomerController implements Initializable{
                 if(m_vehiculeChoice.getText().isEmpty()){
                     throw new ExceptionCarNotChoosen();
                 }else {
-                    idCar = Integer.parseInt(m_vehiculeChoice.getText());
-                    String test = m_vehiculeChoice.getText();
+                    
+                    userLogin = getUser.getUser(); // gets the user value during registration
+                    carName = m_vehiculeChoice.getText();
+                    idCar = getCustomerPurpose.GetPrimaryID("vehicules", carName, "vehicule_id"); // gets the vehicule ID of chosen car
                     purpose = getCustomerPurpose.GetStringUser("person", userLogin, "purpose"); // gets the purpose of the customer
-                    price = calculatePrice.price_calculation(idCar,purpose, first, last);
-    
+                    price = calculatePrice.price_calculation(idCar,purpose, first, last); // calculates the price of the car
+                    days = calculatePrice.period_calculator(first, last);
+                    
+                    System.err.println(days);
                     name = getCustomerPurpose.GetStringUser("person", userLogin, "firstname"); // gets the first name matching with the username
                     lastName = getCustomerPurpose.GetStringUser("person", userLogin, "lastname"); // gets the last name matching with the username
-                    
+                    System.err.println(idCar);
                     Parent tableViewParent = FXMLLoader.load(getClass().getResource("/View/FXMLReservationInformation.fxml"));
                     Scene tableViewScene = new Scene(tableViewParent);
                     Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
